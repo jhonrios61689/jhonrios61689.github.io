@@ -1,0 +1,32 @@
+.bg-primary{
+    background-color: #2c3e50 !important;
+}
+*{
+    font-family: 'Montserrat' , sans-serif;
+}
+/* Progreso personalizado */
+.progress {
+    background-color: rgba(255,255,255,0.2);
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.text-primary{
+    color: #3498db !important;
+}
+/* Efectos Para Las Targetas */
+.card{
+    transition: trasnform 0.3s ease, box-shadow 0.3s ease;
+   /*  transition-duration: 1000ms;
+    transition-property: background-color,color; */
+
+}
+.card:hover{
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+   /*  background-color: #abb1b8;
+    color: #ffff; */
+}
+a:hover{
+    color:black !important;
+}
