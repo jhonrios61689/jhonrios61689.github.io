@@ -14,9 +14,9 @@
 .text-primary{
     color: #3498db !important;
 }
-/* Efectos Para Las Targetas */
+/* Efectos Para Las Tarjetas */
 .card{
-    transition: trasnform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
    /*  transition-duration: 1000ms;
     transition-property: background-color,color; */
 
