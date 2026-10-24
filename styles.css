@@ -89,11 +89,6 @@ body {
     color: #93c5fd;
 }
 
-.sidebar-subtitle {
-    font-size: 0.72rem;
-    letter-spacing: 1px;
-}
-
 .accent-icon {
     color: var(--cv-cyan);
 }
@@ -139,40 +134,48 @@ a.contact-item:hover {
     flex-shrink: 0;
 }
 
-/* Habilidades */
-.skill-box {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.09);
+/* Grid de Habilidades (Sin barras de porcentaje) */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.65rem;
 }
 
-.skill-percent-badge {
-    background: rgba(56, 189, 248, 0.2);
-    color: #bae6fd;
-    font-weight: 700;
-    font-size: 0.8rem;
+.skill-item {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    padding: 0.65rem 0.85rem;
+    border-radius: 0.65rem;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #f8fafc;
+    font-size: 0.88rem;
+    font-weight: 600;
+    transition: background-color 0.25s ease, border-color 0.25s ease, translate 0.25s ease;
+    translate: 0 0;
 }
 
-.progress {
-    height: 10px;
-    background-color: rgba(255, 255, 255, 0.14);
-    border-radius: 999px;
-    overflow: hidden;
+.skill-item:hover {
+    background: rgba(56, 189, 248, 0.14);
+    border-color: rgba(56, 189, 248, 0.4);
+    translate: 0 -2px;
 }
 
-.skill-bar-fill {
-    background: linear-gradient(90deg, var(--cv-cyan) 0%, #60a5fa 100%);
-    border-radius: 999px;
+.skill-icon {
+    font-size: 1.25rem;
+    width: 22px;
+    text-align: center;
+    flex-shrink: 0;
 }
 
-.skill-tag {
-    font-size: 0.76rem;
-    padding: 0.35rem 0.7rem;
-    border-radius: 999px;
-    background: rgba(255, 255, 255, 0.07);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    color: #e2e8f0;
-    font-weight: 500;
-}
+.icon-html { color: #f97316; }
+.icon-css { color: #38bdf8; }
+.icon-java { color: #f87171; }
+.icon-js { color: #facc15; }
+.icon-angular { color: #ef4444; }
+.icon-git { color: #fb923c; }
+.icon-python { color: #60a5fa; }
 
 .print-btn {
     border-color: rgba(255, 255, 255, 0.25);

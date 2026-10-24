@@ -12,7 +12,7 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <!-- CSS personalizado -->
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?v=3">
 </head>
 
 <body>
@@ -26,7 +26,7 @@
                     <!-- Encabezado y Foto de Perfil -->
                     <header class="text-center mb-4 pb-3 border-bottom border-light border-opacity-10">
                         <div class="avatar-wrapper mx-auto mb-3">
-                            <img src="img/img4.jpg" class="avatar-img rounded-circle" alt="Foto de perfil de Jhon Jairo Ríos Gómez">
+                            <img src="img/img4.jpg?v=3" class="avatar-img rounded-circle" alt="Foto de perfil de Jhon Jairo Ríos Gómez">
                             <span class="status-dot" title="Disponible"></span>
                         </div>
                         <span class="badge role-pill mb-2 px-3 py-1">
@@ -81,29 +81,41 @@
                         </ul>
                     </section>
 
-                    <!-- Habilidades Técnicas -->
+                    <!-- Habilidades Técnicas (Sin barra de porcentajes) -->
                     <section class="mb-4">
                         <h2 class="sidebar-title text-uppercase fw-bold mb-3">
                             <i class="fas fa-code me-2 accent-icon"></i>Habilidades
                         </h2>
 
-                        <div class="skill-box p-3 rounded-3 mb-3">
-                            <div class="d-flex justify-content-between align-items-center mb-2">
-                                <span class="fw-semibold"><i class="fab fa-html5 me-2 text-info"></i>HTML / CSS</span>
-                                <span class="badge skill-percent-badge">48%</span>
+                        <div class="skills-grid">
+                            <div class="skill-item">
+                                <i class="fab fa-html5 skill-icon icon-html"></i>
+                                <span>HTML</span>
                             </div>
-                            <div class="progress" role="progressbar" aria-label="Nivel de HTML y CSS" aria-valuenow="48" aria-valuemin="0" aria-valuemax="100">
-                                <div class="progress-bar skill-bar-fill" style="width: 48%"></div>
+                            <div class="skill-item">
+                                <i class="fab fa-css3-alt skill-icon icon-css"></i>
+                                <span>CSS</span>
                             </div>
-                        </div>
-
-                        <h3 class="sidebar-subtitle text-white-50 text-uppercase fw-semibold mb-2 mt-3">Competencias Clave</h3>
-                        <div class="d-flex flex-wrap gap-2">
-                            <span class="skill-tag">Bootstrap 5</span>
-                            <span class="skill-tag">Diseño Responsivo</span>
-                            <span class="skill-tag">Git &amp; GitHub</span>
-                            <span class="skill-tag">Trabajo en Equipo</span>
-                            <span class="skill-tag">Arquitectura SaaS</span>
+                            <div class="skill-item">
+                                <i class="fab fa-java skill-icon icon-java"></i>
+                                <span>Java</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fab fa-js skill-icon icon-js"></i>
+                                <span>JavaScript</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fab fa-angular skill-icon icon-angular"></i>
+                                <span>Angular</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fab fa-git-alt skill-icon icon-git"></i>
+                                <span>Git</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fab fa-python skill-icon icon-python"></i>
+                                <span>Python</span>
+                            </div>
                         </div>
                     </section>
                 </div>
@@ -129,7 +141,7 @@
                         </div>
                     </div>
                     <p class="profile-summary text-secondary mb-0">
-                        Desarrollador Web en formación en la <strong>Universidad de Caldas</strong> con experiencia práctica como Desarrollador Junior. Enfocado en la creación de interfaces web limpias, responsivas y centradas en el usuario utilizando tecnologías modernas como <strong>HTML5, CSS3 y Bootstrap</strong>, colaborando activamente en equipos de desarrollo y optimización continua de rendimiento.
+                        Desarrollador de Software y Web en formación en la <strong>Universidad de Caldas</strong> con experiencia práctica como Desarrollador Junior. Cuento con conocimientos sólidos en desarrollo frontend y backend utilizando <strong>HTML, CSS, JavaScript, Angular, Java, Python y control de versiones con Git</strong>, enfocado en construir soluciones modernas, escalables y de alto rendimiento en equipo.
                     </p>
                 </section>
 
@@ -161,15 +173,15 @@
                                 <ul class="achievement-list mb-0">
                                     <li>
                                         <i class="fas fa-check-circle me-2 text-primary"></i>
-                                        <span><strong>Trabajo en Equipo de Desarrollo:</strong> Colaboración ágil en el diseño, maquetación e integración de componentes web.</span>
+                                        <span><strong>Trabajo en Equipo de Desarrollo:</strong> Colaboración ágil en el diseño, maquetación e integración de componentes web modernos.</span>
                                     </li>
                                     <li>
                                         <i class="fas fa-check-circle me-2 text-primary"></i>
-                                        <span><strong>Implementación de Arquitectura SaaS:</strong> Participación en la estructuración modular de servicios y aplicaciones escalables en la nube.</span>
+                                        <span><strong>Implementación de Arquitectura SaaS:</strong> Participación en la estructuración modular de servicios y aplicaciones escalables.</span>
                                     </li>
                                     <li>
                                         <i class="fas fa-check-circle me-2 text-primary"></i>
-                                        <span><strong>Optimización de Rendimiento:</strong> Mejora en los tiempos de carga, estructura semántica y adaptabilidad en dispositivos móviles.</span>
+                                        <span><strong>Optimización de Rendimiento:</strong> Mejora continua en tiempos de respuesta, código limpio y adaptabilidad multiplataforma.</span>
                                     </li>
                                 </ul>
                             </div>
