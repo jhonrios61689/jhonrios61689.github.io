@@ -4,48 +4,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jhon Jairo Ríos Gómez | Desarrollador Web - Hoja de Vida</title>
+    <!-- MANDATORY: Declare support for both light and dark themes -->
+    <meta name="color-scheme" content="light dark">
+    <title>Jhon Jairo Ríos Gómez | Desarrollador de Software & Web - Hoja de Vida</title>
     <!-- Bootstrap 5 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <!-- CSS personalizado -->
-    <link rel="stylesheet" href="styles.css?v=3">
+    <link rel="stylesheet" href="styles.css?v=6">
 </head>
 
 <body>
 
-    <main class="container-lg py-4 py-lg-5">
-        <div class="cv-wrapper row g-0 rounded-4 overflow-hidden">
+    <main class="container-xl py-4 py-lg-5">
+        <!-- Barra superior de acciones rápidas (No se imprime) -->
+        <div class="top-action-bar d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3 px-2 d-print-none">
+            <div class="d-flex align-items-center gap-2">
+                <span class="availability-pill">
+                    <span class="pulse-dot"></span> Disponible para proyectos y vinculación laboral
+                </span>
+            </div>
+            <div class="d-flex align-items-center gap-2">
+                <label class="theme-switch-label" for="theme-toggle" title="Cambiar entre modo claro y oscuro">
+                    <input type="checkbox" id="theme-toggle" class="visually-hidden">
+                    <i class="fas fa-sun icon-light" aria-hidden="true"></i>
+                    <i class="fas fa-moon icon-dark" aria-hidden="true"></i>
+                    <span>Tema</span>
+                </label>
+                <button onclick="window.print()" class="btn btn-primary btn-sm rounded-pill px-3 py-1 fw-semibold shadow-sm">
+                    <i class="fas fa-file-pdf me-1" aria-hidden="true"></i> Exportar PDF
+                </button>
+            </div>
+        </div>
+
+        <div class="cv-wrapper row g-0 rounded-4">
 
             <!-- Columna Izquierda (Sidebar Ejecutivo) -->
             <aside class="col-lg-4 sidebar-panel text-white p-4 p-xl-5 d-flex flex-column justify-content-between">
                 <div>
                     <!-- Encabezado y Foto de Perfil -->
-                    <header class="text-center mb-4 pb-3 border-bottom border-light border-opacity-10">
+                    <header class="text-center mb-4 pb-4 border-bottom border-light border-opacity-10">
                         <div class="avatar-wrapper mx-auto mb-3">
-                            <img src="img/img4.jpg?v=3" class="avatar-img rounded-circle" alt="Foto de perfil de Jhon Jairo Ríos Gómez">
-                            <span class="status-dot" title="Disponible"></span>
+                            <img src="img/img4.jpg?v=4" class="avatar-img rounded-circle" alt="Foto de perfil de Jhon Jairo Ríos Gómez">
+                            <span class="status-dot" title="Disponible para trabajar"></span>
                         </div>
-                        <span class="badge role-pill mb-2 px-3 py-1">
-                            <i class="fas fa-laptop-code me-1"></i> Desarrollador Web
-                        </span>
+                        <div class="d-flex flex-wrap justify-content-center gap-2 mb-2">
+                            <span class="badge role-pill px-3 py-1">
+                                <i class="fas fa-laptop-code me-1" aria-hidden="true"></i> Desarrollador Full Stack Jr.
+                            </span>
+                        </div>
                         <h1 class="profile-name fw-bold mb-1">JHON JAIRO RÍOS GÓMEZ</h1>
-                        <p class="text-white-50 small mb-0">Aguadas, Caldas · Colombia</p>
+                        <p class="text-white-50 small mb-2">
+                            <i class="fas fa-location-dot me-1 text-info" aria-hidden="true"></i>Aguadas, Caldas · Colombia
+                        </p>
+                        <p class="sidebar-bio small text-white-50 mb-0">
+                            Apasionado por la arquitectura de software limpia, interfaces modernas y soluciones digitales de alto impacto.
+                        </p>
                     </header>
 
                     <!-- Contacto -->
-                    <section class="mb-4 pb-2">
-                        <h2 class="sidebar-title text-uppercase fw-bold mb-3">
-                            <i class="fas fa-address-card me-2 accent-icon"></i>Contacto
+                    <section class="mb-4 pb-2" aria-labelledby="heading-contacto">
+                        <h2 id="heading-contacto" class="sidebar-title text-uppercase fw-bold mb-3">
+                            <i class="fas fa-address-card me-2 accent-icon" aria-hidden="true"></i>Contacto Directo
                         </h2>
                         <ul class="list-unstyled contact-list mb-0">
                             <li>
                                 <a href="tel:+573104406694" class="contact-item">
-                                    <span class="contact-icon"><i class="fas fa-phone"></i></span>
-                                    <div>
+                                    <span class="contact-icon"><i class="fas fa-phone" aria-hidden="true"></i></span>
+                                    <div class="contact-meta">
                                         <small class="d-block text-white-50">Teléfono / WhatsApp</small>
                                         <span>+57 310 440 6694</span>
                                     </div>
@@ -53,68 +82,145 @@
                             </li>
                             <li>
                                 <a href="mailto:jrios4909@gmail.com" class="contact-item">
-                                    <span class="contact-icon"><i class="fas fa-envelope"></i></span>
-                                    <div>
+                                    <span class="contact-icon"><i class="fas fa-envelope" aria-hidden="true"></i></span>
+                                    <div class="contact-meta">
                                         <small class="d-block text-white-50">Correo Electrónico</small>
                                         <span>jrios4909@gmail.com</span>
                                     </div>
                                 </a>
                             </li>
                             <li>
-                                <div class="contact-item">
-                                    <span class="contact-icon"><i class="fas fa-map-marker-alt"></i></span>
-                                    <div>
-                                        <small class="d-block text-white-50">Ubicación</small>
-                                        <span>Aguadas, Caldas</span>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <a href="https://github.com/JhonJairoRios" target="_blank" rel="noopener noreferrer" class="contact-item">
-                                    <span class="contact-icon"><i class="fab fa-github"></i></span>
-                                    <div>
-                                        <small class="d-block text-white-50">Portafolio GitHub</small>
-                                        <span>github.com/JhonJairoRios</span>
+                                <a href="portafolio.html" class="contact-item" title="Ver catálogo de proyectos y tecnologías (Sin acceso a código fuente)">
+                                    <span class="contact-icon"><i class="fas fa-briefcase" aria-hidden="true"></i></span>
+                                    <div class="contact-meta">
+                                        <small class="d-block text-white-50">Portafolio de Proyectos</small>
+                                        <span>Ver proyectos y tecnologías <i class="fas fa-arrow-right ms-1 small" aria-hidden="true"></i></span>
                                     </div>
                                 </a>
+                            </li>
+                            <li>
+                                <div class="contact-item">
+                                    <span class="contact-icon"><i class="fas fa-globe-americas" aria-hidden="true"></i></span>
+                                    <div class="contact-meta">
+                                        <small class="d-block text-white-50">Modalidad</small>
+                                        <span>Remoto · Híbrido · Presencial</span>
+                                    </div>
+                                </div>
                             </li>
                         </ul>
                     </section>
 
-                    <!-- Habilidades Técnicas (Sin barra de porcentajes) -->
-                    <section class="mb-4">
-                        <h2 class="sidebar-title text-uppercase fw-bold mb-3">
-                            <i class="fas fa-code me-2 accent-icon"></i>Habilidades
+                    <!-- Stack Tecnológico -->
+                    <section class="mb-4 pb-2" aria-labelledby="heading-skills">
+                        <h2 id="heading-skills" class="sidebar-title text-uppercase fw-bold mb-3">
+                            <i class="fas fa-layer-group me-2 accent-icon" aria-hidden="true"></i>Stack Tecnológico
                         </h2>
 
                         <div class="skills-grid">
                             <div class="skill-item">
-                                <i class="fab fa-html5 skill-icon icon-html"></i>
-                                <span>HTML</span>
+                                <i class="fab fa-html5 skill-icon icon-html" aria-hidden="true"></i>
+                                <div>
+                                    <span class="d-block">HTML5</span>
+                                    <small class="skill-level">Semántico</small>
+                                </div>
                             </div>
                             <div class="skill-item">
-                                <i class="fab fa-css3-alt skill-icon icon-css"></i>
-                                <span>CSS</span>
+                                <i class="fab fa-css3-alt skill-icon icon-css" aria-hidden="true"></i>
+                                <div>
+                                    <span class="d-block">CSS3</span>
+                                    <small class="skill-level">Grid / Flex</small>
+                                </div>
                             </div>
                             <div class="skill-item">
-                                <i class="fab fa-java skill-icon icon-java"></i>
-                                <span>Java</span>
+                                <i class="fab fa-js skill-icon icon-js" aria-hidden="true"></i>
+                                <div>
+                                    <span class="d-block">JavaScript</span>
+                                    <small class="skill-level">ES6+ / DOM</small>
+                                </div>
                             </div>
                             <div class="skill-item">
-                                <i class="fab fa-js skill-icon icon-js"></i>
-                                <span>JavaScript</span>
+                                <i class="fab fa-angular skill-icon icon-angular" aria-hidden="true"></i>
+                                <div>
+                                    <span class="d-block">Angular</span>
+                                    <small class="skill-level">SPA / TS</small>
+                                </div>
                             </div>
                             <div class="skill-item">
-                                <i class="fab fa-angular skill-icon icon-angular"></i>
-                                <span>Angular</span>
+                                <i class="fab fa-java skill-icon icon-java" aria-hidden="true"></i>
+                                <div>
+                                    <span class="d-block">Java</span>
+                                    <small class="skill-level">POO / Backend</small>
+                                </div>
                             </div>
                             <div class="skill-item">
-                                <i class="fab fa-git-alt skill-icon icon-git"></i>
-                                <span>Git</span>
+                                <i class="fab fa-python skill-icon icon-python" aria-hidden="true"></i>
+                                <div>
+                                    <span class="d-block">Python</span>
+                                    <small class="skill-level">Lógica / Scripts</small>
+                                </div>
                             </div>
                             <div class="skill-item">
-                                <i class="fab fa-python skill-icon icon-python"></i>
-                                <span>Python</span>
+                                <i class="fab fa-bootstrap skill-icon icon-bootstrap" aria-hidden="true"></i>
+                                <div>
+                                    <span class="d-block">Bootstrap 5</span>
+                                    <small class="skill-level">UI Responsiva</small>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fab fa-git-alt skill-icon icon-git" aria-hidden="true"></i>
+                                <div>
+                                    <span class="d-block">Git & GitHub</span>
+                                    <small class="skill-level">Control Versiones</small>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fas fa-database skill-icon icon-sql" aria-hidden="true"></i>
+                                <div>
+                                    <span class="d-block">SQL / Datos</span>
+                                    <small class="skill-level">Modelado Relacional</small>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fas fa-plug skill-icon icon-api" aria-hidden="true"></i>
+                                <div>
+                                    <span class="d-block">REST APIs</span>
+                                    <small class="skill-level">JSON / Fetch</small>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Competencias Profesionales (Soft Skills) -->
+                    <section class="mb-4 pb-2" aria-labelledby="heading-softskills">
+                        <h2 id="heading-softskills" class="sidebar-title text-uppercase fw-bold mb-3">
+                            <i class="fas fa-people-group me-2 accent-icon" aria-hidden="true"></i>Competencias Clave
+                        </h2>
+                        <div class="soft-skills-tags">
+                            <span class="soft-tag"><i class="fas fa-bolt me-1" aria-hidden="true"></i>Metodologías Ágiles (Scrum)</span>
+                            <span class="soft-tag"><i class="fas fa-puzzle-piece me-1" aria-hidden="true"></i>Resolución de Problemas</span>
+                            <span class="soft-tag"><i class="fas fa-comments me-1" aria-hidden="true"></i>Comunicación Asertiva</span>
+                            <span class="soft-tag"><i class="fas fa-code-branch me-1" aria-hidden="true"></i>Trabajo Colaborativo</span>
+                            <span class="soft-tag"><i class="fas fa-graduation-cap me-1" aria-hidden="true"></i>Aprendizaje Continuo</span>
+                        </div>
+                    </section>
+
+                    <!-- Idiomas -->
+                    <section class="mb-4" aria-labelledby="heading-idiomas">
+                        <h2 id="heading-idiomas" class="sidebar-title text-uppercase fw-bold mb-3">
+                            <i class="fas fa-language me-2 accent-icon" aria-hidden="true"></i>Idiomas
+                        </h2>
+                        <div class="language-list">
+                            <div class="language-item">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="fw-semibold">Español</span>
+                                    <span class="lang-badge">Nativo</span>
+                                </div>
+                            </div>
+                            <div class="language-item">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="fw-semibold">Inglés Técnico</span>
+                                    <span class="lang-badge">Lectura & Docs (A2-B1)</span>
+                                </div>
                             </div>
                         </div>
                     </section>
@@ -123,7 +229,7 @@
                 <!-- Pie de barra lateral -->
                 <footer class="pt-3 border-top border-light border-opacity-10 text-center d-print-none">
                     <button onclick="window.print()" class="btn btn-outline-light btn-sm w-100 rounded-pill py-2 fw-semibold print-btn">
-                        <i class="fas fa-file-pdf me-2"></i>Descargar / Imprimir CV
+                        <i class="fas fa-print me-2" aria-hidden="true"></i>Descargar / Imprimir CV
                     </button>
                 </footer>
             </aside>
@@ -131,104 +237,284 @@
             <!-- Columna Derecha (Contenido Principal) -->
             <div class="col-lg-8 main-panel p-4 p-xl-5">
 
-                <!-- Perfil Profesional -->
-                <section class="mb-4 pb-2">
+                <!-- Perfil Profesional + Indicadores -->
+                <section class="mb-5" aria-labelledby="heading-perfil">
                     <div class="section-header d-flex align-items-center mb-3">
-                        <span class="section-icon me-3"><i class="fas fa-user-tie"></i></span>
+                        <span class="section-icon me-3"><i class="fas fa-user-tie" aria-hidden="true"></i></span>
                         <div>
-                            <h2 class="section-title fw-bold mb-0">Perfil Profesional</h2>
-                            <small class="text-muted">Resumen ejecutivo y enfoque</small>
+                            <h2 id="heading-perfil" class="section-title fw-bold mb-0">Perfil Profesional</h2>
+                            <small class="section-subtitle">Resumen ejecutivo y propuesta de valor</small>
                         </div>
                     </div>
-                    <p class="profile-summary text-secondary mb-0">
-                        Desarrollador de Software y Web en formación en la <strong>Universidad de Caldas</strong> con experiencia práctica como Desarrollador Junior. Cuento con conocimientos sólidos en desarrollo frontend y backend utilizando <strong>HTML, CSS, JavaScript, Angular, Java, Python y control de versiones con Git</strong>, enfocado en construir soluciones modernas, escalables y de alto rendimiento en equipo.
+                    <p class="profile-summary mb-3">
+                        Desarrollador de Software y Web en formación en la <strong>Universidad de Caldas</strong> con experiencia práctica en el ciclo completo de desarrollo de aplicaciones web. Cuento con dominio sólido de tecnologías frontend y backend como <strong>HTML5, CSS3, JavaScript (ES6+), Angular, Java, Python, SQL y Git</strong>. Me especializo en construir interfaces modernas, accesibles y adaptables, así como en integrar servicios escalables bajo arquitecturas limpias y metodologías ágiles.
                     </p>
+
+                    <!-- Indicadores Rápidos (Stats) -->
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <span class="stat-value">2+ Años</span>
+                            <span class="stat-label">Práctica en Desarrollo</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-value">10+</span>
+                            <span class="stat-label">Tecnologías & Herramientas</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-value">Full Stack</span>
+                            <span class="stat-label">Enfoque Frontend & Backend</span>
+                        </div>
+                    </div>
                 </section>
 
                 <!-- Experiencia Laboral -->
-                <section class="mb-4 pb-2">
+                <section class="mb-5" aria-labelledby="heading-experiencia">
                     <div class="section-header d-flex align-items-center mb-4">
-                        <span class="section-icon me-3"><i class="fas fa-briefcase"></i></span>
+                        <span class="section-icon me-3"><i class="fas fa-briefcase" aria-hidden="true"></i></span>
                         <div>
-                            <h2 class="section-title fw-bold mb-0">Experiencia Laboral</h2>
-                            <small class="text-muted">Trayectoria profesional reciente</small>
+                            <h2 id="heading-experiencia" class="section-title fw-bold mb-0">Experiencia Laboral</h2>
+                            <small class="section-subtitle">Trayectoria profesional y proyectos aplicados</small>
                         </div>
                     </div>
 
                     <div class="timeline-container">
+                        <!-- Experiencia 1 -->
+                        <article class="card cv-card border-0 mb-4">
+                            <div class="card-body p-4">
+                                <div class="d-flex flex-wrap justify-content-between align-items-start gap-2 mb-2">
+                                    <div>
+                                        <h3 class="card-role fw-bold mb-1">Desarrollador de Software Junior</h3>
+                                        <h4 class="card-company fw-semibold mb-0">
+                                            <i class="fas fa-building me-2" aria-hidden="true"></i>Empresa Tecnológica XYZ
+                                        </h4>
+                                    </div>
+                                    <span class="date-badge">
+                                        <i class="far fa-calendar-alt me-1" aria-hidden="true"></i>2024 – Actualidad
+                                    </span>
+                                </div>
+                                <hr class="my-3 opacity-10">
+                                <ul class="achievement-list mb-3">
+                                    <li>
+                                        <i class="fas fa-check-circle me-2 text-accent" aria-hidden="true"></i>
+                                        <span><strong>Desarrollo de Componentes Frontend:</strong> Colaboración ágil en el diseño, maquetación e integración de vistas reactivas e interactivas con Angular, HTML5, CSS3 y Bootstrap.</span>
+                                    </li>
+                                    <li>
+                                        <i class="fas fa-check-circle me-2 text-accent" aria-hidden="true"></i>
+                                        <span><strong>Implementación de Arquitectura SaaS:</strong> Participación en la estructuración modular de servicios, consumo de APIs RESTful y manejo eficiente de estados de interfaz.</span>
+                                    </li>
+                                    <li>
+                                        <i class="fas fa-check-circle me-2 text-accent" aria-hidden="true"></i>
+                                        <span><strong>Calidad y Optimización Web:</strong> Mejora continua en tiempos de carga, accesibilidad, diseño responsivo multiplataforma y control de versiones con Git/GitHub.</span>
+                                    </li>
+                                </ul>
+                                <div class="tech-tag-list">
+                                    <span class="tech-pill">Angular</span>
+                                    <span class="tech-pill">JavaScript</span>
+                                    <span class="tech-pill">HTML5 / CSS3</span>
+                                    <span class="tech-pill">REST API</span>
+                                    <span class="tech-pill">Git</span>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Experiencia 2 (Nuevo) -->
                         <article class="card cv-card border-0">
                             <div class="card-body p-4">
                                 <div class="d-flex flex-wrap justify-content-between align-items-start gap-2 mb-2">
                                     <div>
-                                        <h3 class="card-role fw-bold mb-1">Desarrollador Junior</h3>
+                                        <h3 class="card-role fw-bold mb-1">Desarrollador Web Independiente & Proyectos Académicos</h3>
                                         <h4 class="card-company fw-semibold mb-0">
-                                            <i class="fas fa-building me-2"></i>Empresa Tecnológica XYZ
+                                            <i class="fas fa-laptop-house me-2" aria-hidden="true"></i>Proyectos de Desarrollo & Práctica Universitaria
                                         </h4>
                                     </div>
                                     <span class="date-badge">
-                                        <i class="far fa-calendar-alt me-1"></i>2024 – Actualidad
+                                        <i class="far fa-calendar-alt me-1" aria-hidden="true"></i>2023 – 2024
                                     </span>
                                 </div>
                                 <hr class="my-3 opacity-10">
-                                <ul class="achievement-list mb-0">
+                                <ul class="achievement-list mb-3">
                                     <li>
-                                        <i class="fas fa-check-circle me-2 text-primary"></i>
-                                        <span><strong>Trabajo en Equipo de Desarrollo:</strong> Colaboración ágil en el diseño, maquetación e integración de componentes web modernos.</span>
+                                        <i class="fas fa-check-circle me-2 text-accent" aria-hidden="true"></i>
+                                        <span><strong>Prototipado y Maquetación Web:</strong> Creación de sitios informativos, portafolios interactivos y paneles de usuario adaptables a dispositivos móviles.</span>
                                     </li>
                                     <li>
-                                        <i class="fas fa-check-circle me-2 text-primary"></i>
-                                        <span><strong>Implementación de Arquitectura SaaS:</strong> Participación en la estructuración modular de servicios y aplicaciones escalables.</span>
-                                    </li>
-                                    <li>
-                                        <i class="fas fa-check-circle me-2 text-primary"></i>
-                                        <span><strong>Optimización de Rendimiento:</strong> Mejora continua en tiempos de respuesta, código limpio y adaptabilidad multiplataforma.</span>
+                                        <i class="fas fa-check-circle me-2 text-accent" aria-hidden="true"></i>
+                                        <span><strong>Lógica Backend y Algoritmia:</strong> Desarrollo de aplicaciones de consola y servicios modulares utilizando Java (POO) y Python para automatización de tareas y gestión de datos.</span>
                                     </li>
                                 </ul>
+                                <div class="tech-tag-list">
+                                    <span class="tech-pill">Java</span>
+                                    <span class="tech-pill">Python</span>
+                                    <span class="tech-pill">Bootstrap 5</span>
+                                    <span class="tech-pill">GitHub Pages</span>
+                                </div>
                             </div>
                         </article>
                     </div>
                 </section>
 
-                <!-- Educación -->
-                <section class="mb-2">
+                <!-- Proyectos Destacados (Nueva Sección) -->
+                <section class="mb-5" aria-labelledby="heading-proyectos">
+                    <div class="section-header d-flex flex-wrap justify-content-between align-items-center gap-2 mb-4">
+                        <div class="d-flex align-items-center">
+                            <span class="section-icon me-3"><i class="fas fa-rocket" aria-hidden="true"></i></span>
+                            <div>
+                                <h2 id="heading-proyectos" class="section-title fw-bold mb-0">Proyectos Destacados</h2>
+                                <small class="section-subtitle">Soluciones desarrolladas e implementaciones técnicas</small>
+                            </div>
+                        </div>
+                        <a href="portafolio.html" class="btn btn-outline-primary btn-sm rounded-pill px-3 fw-semibold d-print-none">
+                            <i class="fas fa-layer-group me-1" aria-hidden="true"></i>Ver Vitrina de Proyectos
+                        </a>
+                    </div>
+
+                    <div class="projects-grid">
+                        <!-- Proyecto 1 -->
+                        <article class="project-card">
+                            <div class="project-header">
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <span class="project-icon"><i class="fas fa-id-badge" aria-hidden="true"></i></span>
+                                    <a href="portafolio.html#proyecto-cv" class="project-link" title="Ver ficha técnica y tecnologías">
+                                        <i class="fas fa-eye me-1" aria-hidden="true"></i>Ficha Técnica
+                                    </a>
+                                </div>
+                                <h3 class="project-title fw-bold">Portafolio & CV Web Interactivo</h3>
+                            </div>
+                            <p class="project-desc">
+                                Plataforma web de currículum ejecutivo con soporte nativo para modo claro/oscuro, arquitectura CSS moderna por capas y formato optimizado para exportación directa a PDF.
+                            </p>
+                            <div class="tech-tag-list mt-auto">
+                                <span class="tech-pill">HTML5</span>
+                                <span class="tech-pill">Modern CSS</span>
+                                <span class="tech-pill">Bootstrap 5</span>
+                            </div>
+                        </article>
+
+                        <!-- Proyecto 2 -->
+                        <article class="project-card">
+                            <div class="project-header">
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <span class="project-icon"><i class="fas fa-cubes" aria-hidden="true"></i></span>
+                                    <a href="portafolio.html#proyecto-angular" class="project-link" title="Ver ficha técnica y tecnologías">
+                                        <i class="fas fa-eye me-1" aria-hidden="true"></i>Ficha Técnica
+                                    </a>
+                                </div>
+                                <h3 class="project-title fw-bold">Panel de Gestión Modular SPA</h3>
+                            </div>
+                            <p class="project-desc">
+                                Interfaz administrativa basada en componentes reutilizables en Angular y TypeScript, con validación de formularios, filtrado dinámico de registros e integración con servicios REST.
+                            </p>
+                            <div class="tech-tag-list mt-auto">
+                                <span class="tech-pill">Angular</span>
+                                <span class="tech-pill">TypeScript</span>
+                                <span class="tech-pill">REST API</span>
+                            </div>
+                        </article>
+
+                        <!-- Proyecto 3 -->
+                        <article class="project-card">
+                            <div class="project-header">
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <span class="project-icon"><i class="fas fa-terminal" aria-hidden="true"></i></span>
+                                    <a href="portafolio.html#proyecto-final" class="project-link" title="Ver ficha técnica y tecnologías">
+                                        <i class="fas fa-eye me-1" aria-hidden="true"></i>Ficha Técnica
+                                    </a>
+                                </div>
+                                <h3 class="project-title fw-bold">Proyecto Final & Gestión de Datos</h3>
+                            </div>
+                            <p class="project-desc">
+                                Solución integral académica desarrollada bajo programación orientada a objetos y arquitectura modular para procesamiento estructurado de datos y automatización.
+                            </p>
+                            <div class="tech-tag-list mt-auto">
+                                <span class="tech-pill">Java</span>
+                                <span class="tech-pill">Python</span>
+                                <span class="tech-pill">SQL</span>
+                            </div>
+                        </article>
+                    </div>
+                </section>
+
+                <!-- Educación y Formación Complementaria -->
+                <section class="mb-2" aria-labelledby="heading-educacion">
                     <div class="section-header d-flex align-items-center mb-4">
-                        <span class="section-icon me-3"><i class="fa-solid fa-user-graduate"></i></span>
+                        <span class="section-icon me-3"><i class="fa-solid fa-user-graduate" aria-hidden="true"></i></span>
                         <div>
-                            <h2 class="section-title fw-bold mb-0">Educación</h2>
-                            <small class="text-muted">Formación académica y cursos</small>
+                            <h2 id="heading-educacion" class="section-title fw-bold mb-0">Educación y Formación</h2>
+                            <small class="section-subtitle">Trayectoria académica y actualización continua</small>
                         </div>
                     </div>
 
                     <div class="timeline-container">
+                        <!-- Educación Superior -->
+                        <article class="card cv-card border-0 mb-4">
+                            <div class="card-body p-4">
+                                <div class="d-flex flex-wrap justify-content-between align-items-start gap-2 mb-2">
+                                    <div>
+                                        <h3 class="card-role fw-bold mb-1">Técnico Profesional en Desarrollo Web (En curso)</h3>
+                                        <h4 class="card-company fw-semibold mb-0">
+                                            <i class="fas fa-university me-2" aria-hidden="true"></i>Universidad de Caldas
+                                        </h4>
+                                    </div>
+                                    <span class="date-badge">
+                                        <i class="far fa-calendar-alt me-1" aria-hidden="true"></i>2024 – Actualidad
+                                    </span>
+                                </div>
+                                <hr class="my-3 opacity-10">
+                                <p class="section-subtitle small fw-semibold text-uppercase mb-2">Áreas de formación destacadas:</p>
+                                <ul class="achievement-list mb-0">
+                                    <li>
+                                        <i class="fas fa-laptop-code me-2 text-accent" aria-hidden="true"></i>
+                                        <span><strong>Ingeniería y Desarrollo Web:</strong> Construcción de interfaces cliente, estándares web modernos, diseño responsivo y arquitectura cliente-servidor.</span>
+                                    </li>
+                                    <li>
+                                        <i class="fas fa-lightbulb me-2 text-accent" aria-hidden="true"></i>
+                                        <span><strong>Programación Creativa & Estructuras de Datos:</strong> Desarrollo de lógica algorítmica, programación orientada a objetos y resolución eficiente de problemas mediante código.</span>
+                                    </li>
+                                    <li>
+                                        <i class="fas fa-microchip me-2 text-accent" aria-hidden="true"></i>
+                                        <span><strong>Tecnología Digital & Entornos Colaborativos:</strong> Fundamentos de sistemas, administración de repositorios con Git y herramientas tecnológicas en la nube.</span>
+                                    </li>
+                                    <li>
+                                        <i class="fas fa-language me-2 text-accent" aria-hidden="true"></i>
+                                        <span><strong>Inglés Técnico Aplicado:</strong> Comprensión lectora de documentación oficial, APIs y terminología internacional de ingeniería de software.</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </article>
+
+                        <!-- Formación Complementaria (Nuevo) -->
                         <article class="card cv-card border-0">
                             <div class="card-body p-4">
                                 <div class="d-flex flex-wrap justify-content-between align-items-start gap-2 mb-2">
                                     <div>
-                                        <h3 class="card-role fw-bold mb-1">Aspirante Técnico Profesional en Desarrollo Web</h3>
+                                        <h3 class="card-role fw-bold mb-1">Formación Complementaria & Autoaprendizaje</h3>
                                         <h4 class="card-company fw-semibold mb-0">
-                                            <i class="fas fa-university me-2"></i>Universidad de Caldas
+                                            <i class="fas fa-certificate me-2" aria-hidden="true"></i>Especialización Práctica en Tecnologías Web
                                         </h4>
                                     </div>
                                     <span class="date-badge">
-                                        <i class="far fa-calendar-alt me-1"></i>2024 – Actualidad
+                                        <i class="far fa-calendar-alt me-1" aria-hidden="true"></i>2023 – 2026
                                     </span>
                                 </div>
                                 <hr class="my-3 opacity-10">
-                                <p class="text-muted small fw-semibold text-uppercase mb-2">Áreas de formación destacadas:</p>
-                                <ul class="achievement-list mb-0">
-                                    <li>
-                                        <i class="fas fa-laptop me-2 text-primary"></i>
-                                        <span><strong>Tecnología Digital:</strong> Fundamentos de sistemas, entornos digitales y herramientas tecnológicas modernas.</span>
-                                    </li>
-                                    <li>
-                                        <i class="fas fa-language me-2 text-primary"></i>
-                                        <span><strong>Inglés Técnico 1:</strong> Comprensión de documentación técnica y terminología de desarrollo de software.</span>
-                                    </li>
-                                    <li>
-                                        <i class="fas fa-lightbulb me-2 text-primary"></i>
-                                        <span><strong>Programación Creativa 1:</strong> Desarrollo de lógica algorítmica y resolución creativa de problemas mediante código.</span>
-                                    </li>
-                                </ul>
+                                <div class="cert-grid">
+                                    <div class="cert-item">
+                                        <i class="fab fa-angular text-danger me-2" aria-hidden="true"></i>
+                                        <span>Desarrollo Frontend con Angular y TypeScript</span>
+                                    </div>
+                                    <div class="cert-item">
+                                        <i class="fab fa-git-alt text-warning me-2" aria-hidden="true"></i>
+                                        <span>Flujos Profesionales con Git & GitHub</span>
+                                    </div>
+                                    <div class="cert-item">
+                                        <i class="fab fa-python text-primary me-2" aria-hidden="true"></i>
+                                        <span>Fundamentos de Python y Automatización</span>
+                                    </div>
+                                    <div class="cert-item">
+                                        <i class="fas fa-universal-access text-success me-2" aria-hidden="true"></i>
+                                        <span>Diseño Web Responsivo y Accesibilidad UI/UX</span>
+                                    </div>
+                                </div>
                             </div>
                         </article>
                     </div>

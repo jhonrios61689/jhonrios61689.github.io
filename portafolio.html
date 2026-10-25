@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light dark">
+    <title>Portafolio de Proyectos y Tecnologías | Jhon Jairo Ríos Gómez</title>
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- CSS personalizado -->
+    <link rel="stylesheet" href="styles.css?v=6">
+</head>
+
+<body>
+
+    <main class="container-xl py-4 py-lg-5">
+        <!-- Barra Superior de Navegación -->
+        <div class="top-action-bar d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3 px-2 d-print-none">
+            <div class="d-flex flex-wrap align-items-center gap-2">
+                <a href="index.html" class="btn btn-primary btn-sm rounded-pill px-3 py-1 fw-semibold shadow-sm">
+                    <i class="fas fa-arrow-left me-1" aria-hidden="true"></i> Volver a la Hoja de Vida
+                </a>
+                <span class="availability-pill">
+                    <i class="fas fa-shield-halved text-primary" aria-hidden="true"></i>
+                    Vista Cliente · Código Fuente Protegido
+                </span>
+            </div>
+            <div class="d-flex align-items-center gap-2">
+                <label class="theme-switch-label" for="theme-toggle" title="Cambiar entre modo claro y oscuro">
+                    <input type="checkbox" id="theme-toggle" class="visually-hidden">
+                    <i class="fas fa-sun icon-light" aria-hidden="true"></i>
+                    <i class="fas fa-moon icon-dark" aria-hidden="true"></i>
+                    <span>Tema</span>
+                </label>
+                <button onclick="window.print()" class="btn btn-outline-primary btn-sm rounded-pill px-3 py-1 fw-semibold">
+                    <i class="fas fa-file-pdf me-1" aria-hidden="true"></i> Exportar Catálogo PDF
+                </button>
+            </div>
+        </div>
+
+        <div class="cv-wrapper rounded-4 overflow-hidden">
+            <!-- Encabezado Ejecutivo del Portafolio -->
+            <header class="sidebar-panel text-white p-4 p-xl-5">
+                <div class="row align-items-center g-4">
+                    <div class="col-md-8">
+                        <span class="badge role-pill px-3 py-1 mb-2">
+                            <i class="fas fa-cubes me-1" aria-hidden="true"></i> Catálogo Oficial de Soluciones Desarrolladas
+                        </span>
+                        <h1 class="profile-name fw-bold mb-2">PORTAFOLIO DE PROYECTOS Y TECNOLOGÍAS</h1>
+                        <p class="text-white-50 mb-0">
+                            Presentación ejecutiva para clientes y reclutadores de los proyectos desarrollados por <strong>Jhon Jairo Ríos Gómez</strong>. Por políticas de propiedad intelectual y confidencialidad, esta vista expone la arquitectura, funcionalidades y tecnologías empleadas sin acceso al código fuente.
+                        </p>
+                    </div>
+                    <div class="col-md-4 text-md-end">
+                        <div class="d-inline-flex flex-column gap-2 p-3 rounded-4 border border-info border-opacity-25 bg-dark bg-opacity-50 text-start">
+                            <div class="d-flex align-items-center gap-2">
+                                <img src="img/img4.jpg?v=4" alt="Jhon Jairo Ríos Gómez" width="48" height="48" class="rounded-circle object-fit-cover border border-2 border-info">
+                                <div>
+                                    <strong class="d-block text-white small">Jhon Jairo Ríos Gómez</strong>
+                                    <small class="text-white-50">Desarrollador Full Stack Jr.</small>
+                                </div>
+                            </div>
+                            <a href="mailto:jrios4909@gmail.com?subject=Solicitud%20de%20Demostraci%C3%B3n%20de%20Proyecto" class="btn btn-info btn-sm rounded-pill fw-bold text-dark mt-1 d-print-none">
+                                <i class="fas fa-desktop me-1" aria-hidden="true"></i> Solicitar Demo en Vivo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Contenedor Principal con Filtro Interactivo por Estado (:has) -->
+            <div class="main-panel p-4 p-xl-5 portfolio-showcase">
+
+                <!-- Barra de Filtros por Tecnología -->
+                <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-4 pb-3 border-bottom d-print-none">
+                    <div>
+                        <h2 class="section-title fw-bold mb-0">Proyectos Realizados</h2>
+                        <small class="section-subtitle">Filtra los proyectos según el stack tecnológico utilizado</small>
+                    </div>
+                    <div class="filter-bar" role="radiogroup" aria-label="Filtrar proyectos por tecnología">
+                        <label class="filter-pill">
+                            <input type="radio" name="tech-filter" value="all" class="visually-hidden filter-input" checked>
+                            <i class="fas fa-border-all me-1" aria-hidden="true"></i> Todos (4)
+                        </label>
+                        <label class="filter-pill">
+                            <input type="radio" name="tech-filter" value="frontend" class="visually-hidden filter-input">
+                            <i class="fab fa-html5 me-1" aria-hidden="true"></i> Frontend & UI
+                        </label>
+                        <label class="filter-pill">
+                            <input type="radio" name="tech-filter" value="angular" class="visually-hidden filter-input">
+                            <i class="fab fa-angular me-1" aria-hidden="true"></i> Angular & SPA
+                        </label>
+                        <label class="filter-pill">
+                            <input type="radio" name="tech-filter" value="backend" class="visually-hidden filter-input">
+                            <i class="fas fa-server me-1" aria-hidden="true"></i> Java, Python & SQL
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Grid de Fichas Técnicas de Proyectos -->
+                <div class="showcase-grid">
+
+                    <!-- Proyecto 1: JhonJariroRios.github.io -->
+                    <article id="proyecto-cv" class="card cv-card showcase-card border-0" data-category="frontend">
+                        <div class="card-body p-4 d-flex flex-column justify-content-between">
+                            <div>
+                                <div class="d-flex flex-wrap justify-content-between align-items-start gap-2 mb-3">
+                                    <div class="d-flex align-items-center gap-3">
+                                        <span class="section-icon"><i class="fas fa-id-badge" aria-hidden="true"></i></span>
+                                        <div>
+                                            <span class="badge bg-success-subtle text-success border border-success-subtle rounded-pill mb-1">
+                                                <i class="fas fa-circle-check me-1" aria-hidden="true"></i>En Producción Web
+                                            </span>
+                                            <h3 class="card-role fw-bold mb-0">Plataforma Web de Hoja de Vida & Portafolio Ejecutivo</h3>
+                                        </div>
+                                    </div>
+                                    <span class="private-code-badge" title="El código fuente no es visible para clientes">
+                                        <i class="fas fa-lock me-1" aria-hidden="true"></i>Código Protegido
+                                    </span>
+                                </div>
+
+                                <p class="project-desc mb-3">
+                                    Aplicación web responsiva diseñada para presentar el perfil profesional, competencias técnicas y catálogo de soluciones para clientes. Incluye adaptación automática de tema claro/oscuro y motor de exportación directa a formato PDF de alta legibilidad.
+                                </p>
+
+                                <div class="mb-3">
+                                    <h4 class="small fw-bold text-uppercase section-subtitle mb-2">
+                                        <i class="fas fa-list-check me-1" aria-hidden="true"></i>Módulos y Capacidades Implementadas:
+                                    </h4>
+                                    <ul class="achievement-list mb-0">
+                                        <li>
+                                            <i class="fas fa-check-circle me-2 text-accent" aria-hidden="true"></i>
+                                            <span><strong>Arquitectura CSS por Capas (`@layer` y `subgrid`):</strong> Maquetación fluida adaptable a móviles, tablets, monitores de escritorio e impresión en papel tamaño carta.</span>
+                                        </li>
+                                        <li>
+                                            <i class="fas fa-check-circle me-2 text-accent" aria-hidden="true"></i>
+                                            <span><strong>Sistema de Temas Nativo (`light-dark`):</strong> Cambio instantáneo entre modo claro y oscuro sin parpadeos y con alto contraste visual.</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="pt-3 border-top">
+                                <small class="d-block fw-bold text-uppercase mb-2 section-subtitle">Tecnologías utilizadas en este proyecto:</small>
+                                <div class="tech-tag-list">
+                                    <span class="tech-pill"><i class="fab fa-html5 me-1 icon-html" aria-hidden="true"></i>HTML5 Semántico</span>
+                                    <span class="tech-pill"><i class="fab fa-css3-alt me-1 icon-css" aria-hidden="true"></i>CSS3 Moderno (Grid / Subgrid)</span>
+                                    <span class="tech-pill"><i class="fab fa-bootstrap me-1 icon-bootstrap" aria-hidden="true"></i>Bootstrap 5</span>
+                                    <span class="tech-pill"><i class="fab fa-git-alt me-1 icon-git" aria-hidden="true"></i>Git & Despliegue Web</span>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Proyecto 2: Panel Modular Angular -->
+                    <article id="proyecto-angular" class="card cv-card showcase-card border-0" data-category="angular">
+                        <div class="card-body p-4 d-flex flex-column justify-content-between">
+                            <div>
+                                <div class="d-flex flex-wrap justify-content-between align-items-start gap-2 mb-3">
+                                    <div class="d-flex align-items-center gap-3">
+                                        <span class="section-icon"><i class="fab fa-angular" aria-hidden="true"></i></span>
+                                        <div>
+                                            <span class="badge bg-primary-subtle text-primary border border-primary-subtle rounded-pill mb-1">
+                                                <i class="fas fa-layer-group me-1" aria-hidden="true"></i>Aplicación SPA Modular
+                                            </span>
+                                            <h3 class="card-role fw-bold mb-0">Panel Administrativo y Gestión de Servicios (Angular SPA)</h3>
+                                        </div>
+                                    </div>
+                                    <span class="private-code-badge" title="El código fuente no es visible para clientes">
+                                        <i class="fas fa-lock me-1" aria-hidden="true"></i>Código Protegido
+                                    </span>
+                                </div>
+
+                                <p class="project-desc mb-3">
+                                    Sistema web tipo Single Page Application (SPA) orientado a la administración modular de usuarios, registros y métricas operativas bajo arquitectura SaaS, garantizando navegación instantánea sin recargas de página.
+                                </p>
+
+                                <div class="mb-3">
+                                    <h4 class="small fw-bold text-uppercase section-subtitle mb-2">
+                                        <i class="fas fa-list-check me-1" aria-hidden="true"></i>Módulos y Capacidades Implementadas:
+                                    </h4>
+                                    <ul class="achievement-list mb-0">
+                                        <li>
+                                            <i class="fas fa-check-circle me-2 text-accent" aria-hidden="true"></i>
+                                            <span><strong>Componentes Reutilizables y Tipado Estricto:</strong> Estructuración escalable con Angular y TypeScript para mantener la integridad de los datos en el cliente.</span>
+                                        </li>
+                                        <li>
+                                            <i class="fas fa-check-circle me-2 text-accent" aria-hidden="true"></i>
+                                            <span><strong>Integración con Servicios RESTful:</strong> Consumo asíncrono de APIs en formato JSON, formularios reactivos con validación en tiempo real y tablas dinámicas.</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="pt-3 border-top">
+                                <small class="d-block fw-bold text-uppercase mb-2 section-subtitle">Tecnologías utilizadas en este proyecto:</small>
+                                <div class="tech-tag-list">
+                                    <span class="tech-pill"><i class="fab fa-angular me-1 icon-angular" aria-hidden="true"></i>Angular</span>
+                                    <span class="tech-pill"><i class="fab fa-js me-1 icon-js" aria-hidden="true"></i>TypeScript / ES6+</span>
+                                    <span class="tech-pill"><i class="fas fa-plug me-1 icon-api" aria-hidden="true"></i>REST APIs / JSON</span>
+                                    <span class="tech-pill"><i class="fab fa-html5 me-1 icon-html" aria-hidden="true"></i>HTML5 & CSS3</span>
+                                    <span class="tech-pill"><i class="fab fa-git-alt me-1 icon-git" aria-hidden="true"></i>Control de Versiones Git</span>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Proyecto 3: ProyectoFinal -->
+                    <article id="proyecto-final" class="card cv-card showcase-card border-0" data-category="backend">
+                        <div class="card-body p-4 d-flex flex-column justify-content-between">
+                            <div>
+                                <div class="d-flex flex-wrap justify-content-between align-items-start gap-2 mb-3">
+                                    <div class="d-flex align-items-center gap-3">
+                                        <span class="section-icon"><i class="fas fa-laptop-code" aria-hidden="true"></i></span>
+                                        <div>
+                                            <span class="badge bg-info-subtle text-info-emphasis border border-info-subtle rounded-pill mb-1">
+                                                <i class="fas fa-graduation-cap me-1" aria-hidden="true"></i>Proyecto Integrador Universitario
+                                            </span>
+                                            <h3 class="card-role fw-bold mb-0">Proyecto Final — Sistema Integrado de Gestión Web y Datos</h3>
+                                        </div>
+                                    </div>
+                                    <span class="private-code-badge" title="El código fuente no es visible para clientes">
+                                        <i class="fas fa-lock me-1" aria-hidden="true"></i>Código Protegido
+                                    </span>
+                                </div>
+
+                                <p class="project-desc mb-3">
+                                    Proyecto integrador desarrollado en el marco de la formación en Desarrollo Web en la Universidad de Caldas, combinando interfaz de usuario estructurada, lógica de negocio validada y persistencia relacional de información.
+                                </p>
+
+                                <div class="mb-3">
+                                    <h4 class="small fw-bold text-uppercase section-subtitle mb-2">
+                                        <i class="fas fa-list-check me-1" aria-hidden="true"></i>Módulos y Capacidades Implementadas:
+                                    </h4>
+                                    <ul class="achievement-list mb-0">
+                                        <li>
+                                            <i class="fas fa-check-circle me-2 text-accent" aria-hidden="true"></i>
+                                            <span><strong>Arquitectura Cliente-Servidor:</strong> Separación clara entre la capa de presentación web, reglas de negocio y almacenamiento de datos.</span>
+                                        </li>
+                                        <li>
+                                            <i class="fas fa-check-circle me-2 text-accent" aria-hidden="true"></i>
+                                            <span><strong>Flujo Completo CRUD y Validaciones:</strong> Registro, consulta, actualización y reportes con control de errores y experiencia de usuario intuitiva.</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="pt-3 border-top">
+                                <small class="d-block fw-bold text-uppercase mb-2 section-subtitle">Tecnologías utilizadas en este proyecto:</small>
+                                <div class="tech-tag-list">
+                                    <span class="tech-pill"><i class="fab fa-java me-1 icon-java" aria-hidden="true"></i>Java (POO)</span>
+                                    <span class="tech-pill"><i class="fab fa-js me-1 icon-js" aria-hidden="true"></i>JavaScript</span>
+                                    <span class="tech-pill"><i class="fas fa-database me-1 icon-sql" aria-hidden="true"></i>SQL / Base de Datos</span>
+                                    <span class="tech-pill"><i class="fab fa-html5 me-1 icon-html" aria-hidden="true"></i>HTML5 & CSS3</span>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Proyecto 4: Suite Python & Algoritmia -->
+                    <article id="proyecto-python" class="card cv-card showcase-card border-0" data-category="backend">
+                        <div class="card-body p-4 d-flex flex-column justify-content-between">
+                            <div>
+                                <div class="d-flex flex-wrap justify-content-between align-items-start gap-2 mb-3">
+                                    <div class="d-flex align-items-center gap-3">
+                                        <span class="section-icon"><i class="fab fa-python" aria-hidden="true"></i></span>
+                                        <div>
+                                            <span class="badge bg-warning-subtle text-warning-emphasis border border-warning-subtle rounded-pill mb-1">
+                                                <i class="fas fa-gears me-1" aria-hidden="true"></i>Automatización & Algoritmia
+                                            </span>
+                                            <h3 class="card-role fw-bold mb-0">Suite de Automatización, Scripts y Procesamiento en Python</h3>
+                                        </div>
+                                    </div>
+                                    <span class="private-code-badge" title="El código fuente no es visible para clientes">
+                                        <i class="fas fa-lock me-1" aria-hidden="true"></i>Código Protegido
+                                    </span>
+                                </div>
+
+                                <p class="project-desc mb-3">
+                                    Colección de herramientas lógicas y scripts orientados a la automatización de procesos repetitivos, validación de estructuras de datos y generación rápida de reportes estructurados.
+                                </p>
+
+                                <div class="mb-3">
+                                    <h4 class="small fw-bold text-uppercase section-subtitle mb-2">
+                                        <i class="fas fa-list-check me-1" aria-hidden="true"></i>Módulos y Capacidades Implementadas:
+                                    </h4>
+                                    <ul class="achievement-list mb-0">
+                                        <li>
+                                            <i class="fas fa-check-circle me-2 text-accent" aria-hidden="true"></i>
+                                            <span><strong>Procesamiento y Limpieza de Datos:</strong> Algoritmos optimizados para lectura, transformación y exportación de información estructurada.</span>
+                                        </li>
+                                        <li>
+                                            <i class="fas fa-check-circle me-2 text-accent" aria-hidden="true"></i>
+                                            <span><strong>Resolución Algorítmica Modular:</strong> Funciones reutilizables documentadas bajo estándares de código limpio.</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="pt-3 border-top">
+                                <small class="d-block fw-bold text-uppercase mb-2 section-subtitle">Tecnologías utilizadas en este proyecto:</small>
+                                <div class="tech-tag-list">
+                                    <span class="tech-pill"><i class="fab fa-python me-1 icon-python" aria-hidden="true"></i>Python 3</span>
+                                    <span class="tech-pill"><i class="fas fa-database me-1 icon-sql" aria-hidden="true"></i>Estructuras de Datos</span>
+                                    <span class="tech-pill"><i class="fas fa-terminal me-1 icon-api" aria-hidden="true"></i>CLI & Automatización</span>
+                                    <span class="tech-pill"><i class="fab fa-git-alt me-1 icon-git" aria-hidden="true"></i>Git</span>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                </div>
+
+                <!-- Nota de Confidencialidad para el Cliente -->
+                <div class="mt-4 p-4 rounded-4 border d-flex flex-wrap justify-content-between align-items-center gap-3 client-notice">
+                    <div class="d-flex align-items-center gap-3">
+                        <span class="section-icon"><i class="fas fa-user-shield" aria-hidden="true"></i></span>
+                        <div>
+                            <h3 class="h6 fw-bold mb-1">Protección de Código Fuente y Demostraciones Técnicas</h3>
+                            <p class="small mb-0 project-desc">
+                                Los repositorios de código se mantienen privados para proteger la propiedad intelectual de cada desarrollo. Si deseas agendar una revisión técnica en vivo o solicitar una cotización, contáctame directamente.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="d-flex gap-2 d-print-none">
+                        <a href="https://wa.me/573104406694" target="_blank" rel="noopener noreferrer" class="btn btn-success btn-sm rounded-pill px-3 py-2 fw-semibold">
+                            <i class="fab fa-whatsapp me-1" aria-hidden="true"></i> Contactar por WhatsApp
+                        </a>
+                        <a href="index.html" class="btn btn-outline-primary btn-sm rounded-pill px-3 py-2 fw-semibold">
+                            <i class="fas fa-id-card me-1" aria-hidden="true"></i> Ver Hoja de Vida
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Fallback script for older browsers that do not support CSS :has() -->
+    <script>
+        if (!CSS.supports('selector(:has(*))')) {
+            const showcase = document.querySelector('.portfolio-showcase');
+            const inputs = document.querySelectorAll('.filter-input');
+            if (showcase && inputs.length) {
+                inputs.forEach((input) => {
+                    input.addEventListener('change', (e) => {
+                        showcase.setAttribute('data-active-filter', e.target.value);
+                    });
+                });
+            }
+        }
+    </script>
+</body>
+
+</html>
+
