@@ -1,0 +1,453 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Estructura del DOM · Dulce Tentación</title>
+  <link rel="icon" href="assets/img/logo.png">
+  <style>
+    @font-face {
+      font-family: "Arial Rounded Local";
+      src: url("assets/fonts/arial-rounded.ttf") format("truetype");
+      font-display: swap;
+    }
+    :root {
+      --cream: #FFF0D6;
+      --pink: #F58DA9;
+      --mint: #9ACDB5;
+      --ink: #482C28;
+      --bg: #FCFAF7;
+      --surface: #FFFFFF;
+      --muted: #705852;
+      --line: #E7DDD4;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font: 400 15px/1.55 Arial, sans-serif;
+    }
+    .topbar {
+      background: var(--cream);
+      border-bottom: 1px solid var(--line);
+      padding: 20px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--ink);
+      font-family: "Arial Rounded Local", Arial, sans-serif;
+      font-size: 22px;
+    }
+    .brand img {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+    }
+    .ssl-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--mint);
+      color: var(--ink);
+      padding: 8px 16px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .wrap {
+      width: min(1220px, calc(100% - 36px));
+      margin: 0 auto;
+      padding: 36px 0 60px;
+    }
+    .hero-box {
+      background: linear-gradient(135deg, var(--cream), #fbe4eb);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 32px;
+      margin-bottom: 28px;
+    }
+    .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--muted);
+      margin: 0 0 8px;
+    }
+    h1, h2, h3 {
+      font-family: "Arial Rounded Local", Arial, sans-serif;
+      font-weight: 400;
+      margin: 0;
+    }
+    h1 { font-size: clamp(28px, 3.5vw, 42px); }
+    .hero-box p { color: var(--muted); margin: 10px 0 0; max-width: 760px; }
+    .tabs {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 22px;
+      flex-wrap: wrap;
+    }
+    .tab-btn {
+      border: 1px solid var(--line);
+      background: var(--surface);
+      color: var(--ink);
+      padding: 11px 20px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 13px;
+      cursor: pointer;
+    }
+    .tab-btn.active {
+      background: var(--pink);
+      border-color: var(--pink);
+    }
+    .toolbar {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 18px;
+      flex-wrap: wrap;
+    }
+    .btn-small {
+      border: 1px solid var(--line);
+      background: var(--cream);
+      color: var(--ink);
+      padding: 7px 14px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .dom-panel {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 28px;
+      box-shadow: 0 12px 34px rgba(72, 44, 40, 0.05);
+    }
+    /* Árbol visual del DOM */
+    ul.dom-tree {
+      list-style: none;
+      padding-left: 24px;
+      margin: 6px 0;
+      border-left: 2px dashed #e2d3c8;
+    }
+    ul.dom-tree.root {
+      padding-left: 0;
+      border-left: 0;
+    }
+    .dom-tree li {
+      margin: 8px 0;
+      position: relative;
+    }
+    .node-card {
+      display: inline-flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding: 8px 13px;
+      border-radius: 10px;
+      border: 1px solid var(--line);
+      background: #fdfbf9;
+      font-size: 13px;
+      cursor: pointer;
+      transition: transform 0.15s ease, background-color 0.15s ease;
+    }
+    .node-card:hover {
+      background: var(--cream);
+      transform: translateX(3px);
+    }
+    .tag {
+      font-family: Consolas, monospace;
+      font-weight: 700;
+      color: #9e2a4b;
+      background: #fbe4eb;
+      padding: 2px 7px;
+      border-radius: 6px;
+    }
+    .id-badge {
+      font-family: Consolas, monospace;
+      font-size: 12px;
+      background: #e7f2eb;
+      color: #2f5e46;
+      padding: 2px 7px;
+      border-radius: 6px;
+      font-weight: 700;
+    }
+    .class-badge {
+      font-family: Consolas, monospace;
+      font-size: 12px;
+      background: var(--cream);
+      color: var(--ink);
+      padding: 2px 7px;
+      border-radius: 6px;
+    }
+    .desc {
+      color: var(--muted);
+      font-size: 12px;
+    }
+    .event-badge {
+      font-size: 11px;
+      background: var(--ink);
+      color: #fff;
+      padding: 2px 7px;
+      border-radius: 999px;
+      font-weight: 700;
+    }
+    li.collapsed > ul.dom-tree {
+      display: none;
+    }
+    .legend {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--line);
+      font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="index.html">
+      <img src="assets/img/logo.png" alt="Logo Dulce Tentación">
+      <span>Dulce Tentación · Estructura del DOM</span>
+    </a>
+    <span class="ssl-badge">🔒 Certificado SSL / HTTPS Activo</span>
+  </header>
+
+  <main class="wrap">
+    <section class="hero-box">
+      <p class="eyebrow">Arquitectura Frontend · Document Object Model</p>
+      <h1>Árbol Jerárquico del DOM</h1>
+      <p>Representación estructurada de los nodos HTML5, identificadores (<code>#id</code>), clases CSS (<code>.class</code>), modales nativos (<code>&lt;dialog&gt;</code>) y eventos dinámicos de JavaScript en <b>Dulce Tentación</b>.</p>
+    </section>
+
+    <div class="tabs">
+      <button class="tab-btn active" data-target="dom-tienda">1. DOM Tienda Principal (index.html)</button>
+      <button class="tab-btn" data-target="dom-admin">2. DOM Portal Administración y Empleados (administracion/)</button>
+    </div>
+
+    <div class="toolbar">
+      <button class="btn-small" id="expand-all">Expandir todos los nodos (+)</button>
+      <button class="btn-small" id="collapse-all">Contraer ramas secundarias (−)</button>
+    </div>
+
+    <!-- ÁRBOL 1: TIENDA PRINCIPAL -->
+    <section class="dom-panel" id="dom-tienda">
+      <div class="legend">
+        <span><span class="tag">&lt;etiqueta&gt;</span> Elemento HTML5</span>
+        <span><span class="id-badge">#id</span> Identificador único</span>
+        <span><span class="class-badge">.clase</span> Selector CSS</span>
+        <span><span class="event-badge">JS Event</span> Interacción DOM</span>
+      </div>
+
+      <ul class="dom-tree root">
+        <li>
+          <div class="node-card"><span class="tag">document</span> <span class="desc">Raíz del Document Object Model (HTML5)</span></div>
+          <ul class="dom-tree">
+            <li>
+              <div class="node-card"><span class="tag">&lt;html lang="es"&gt;</span></div>
+              <ul class="dom-tree">
+                <li>
+                  <div class="node-card"><span class="tag">&lt;head&gt;</span> <span class="desc">Metadatos, título, favicon, <code>css/styles.css</code> y <code>js/app.js (defer)</code></span></div>
+                </li>
+                <li>
+                  <div class="node-card"><span class="tag">&lt;body&gt;</span> <span class="desc">Cuerpo principal de la interfaz de clientes</span></div>
+                  <ul class="dom-tree">
+                    <li>
+                      <div class="node-card"><span class="tag">&lt;a&gt;</span> <span class="class-badge">.skip-link</span> <span class="desc">Accesibilidad: saltar directo a <code>#contenido</code></span></div>
+                    </li>
+
+                    <!-- HEADER -->
+                    <li>
+                      <div class="node-card"><span class="tag">&lt;header&gt;</span> <span class="class-badge">.header.wrap</span> <span class="desc">Barra superior fija con navegación, sesión y carrito</span></div>
+                      <ul class="dom-tree">
+                        <li><div class="node-card"><span class="tag">&lt;a&gt;</span> <span class="class-badge">.brand</span> <span class="desc">Logo <code>assets/img/logo.png</code> + nombre de marca</span></div></li>
+                        <li><div class="node-card"><span class="tag">&lt;nav&gt;</span> <span class="id-badge">#menu</span> <span class="class-badge">.nav</span> <span class="desc">Enlaces: Inicio, Postres, Cafés, Nosotros</span></div></li>
+                        <li>
+                          <div class="node-card"><span class="tag">&lt;div&gt;</span> <span class="class-badge">.header-actions</span> <span class="desc">Acciones de usuario y carrito</span></div>
+                          <ul class="dom-tree">
+                            <li><div class="node-card"><span class="tag">&lt;button&gt;</span> <span class="id-badge">#open-auth</span> <span class="class-badge">.user-trigger</span> <span class="event-badge">click → openAuthDialog()</span> <span class="desc">Contiene <code>#user-label</code></span></div></li>
+                            <li><div class="node-card"><span class="tag">&lt;button&gt;</span> <span class="id-badge">#open-cart</span> <span class="class-badge">.cart-trigger</span> <span class="event-badge">click → showModal()</span> <span class="desc">Contiene contador <code>#cart-count</code></span></div></li>
+                            <li><div class="node-card"><span class="tag">&lt;button&gt;</span> <span class="id-badge">#menu-toggle</span> <span class="class-badge">.menu-trigger</span> <span class="event-badge">click → toggle menu</span></div></li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </li>
+
+                    <!-- MAIN -->
+                    <li>
+                      <div class="node-card"><span class="tag">&lt;main&gt;</span> <span class="id-badge">#contenido</span> <span class="desc">Contenedor principal de las 5 secciones de la tienda</span></div>
+                      <ul class="dom-tree">
+                        <li>
+                          <div class="node-card"><span class="tag">&lt;section&gt;</span> <span class="id-badge">#inicio</span> <span class="class-badge">.hero</span> <span class="desc">Portada principal, estadísticas y composición visual</span></div>
+                        </li>
+                        <li>
+                          <div class="node-card"><span class="tag">&lt;section&gt;</span> <span class="class-badge">.categories.wrap</span> <span class="desc">Tarjetas de filtro rápido: Postres (14) y Cafés (6)</span></div>
+                        </li>
+                        <li>
+                          <div class="node-card"><span class="tag">&lt;section&gt;</span> <span class="class-badge">.featured.wrap</span> <span class="desc">Selección de la vitrina</span></div>
+                          <ul class="dom-tree">
+                            <li><div class="node-card"><span class="tag">&lt;div&gt;</span> <span class="id-badge">#featured-products</span> <span class="class-badge">.product-grid.featured-grid</span> <span class="event-badge">Renderizado dinámico JS</span></div></li>
+                          </ul>
+                        </li>
+                        <li>
+                          <div class="node-card"><span class="tag">&lt;section&gt;</span> <span class="id-badge">#catalogo</span> <span class="class-badge">.catalog.wrap</span> <span class="desc">Catálogo completo conectado a MySQL <code>sistema_dulcetentacion</code></span></div>
+                          <ul class="dom-tree">
+                            <li>
+                              <div class="node-card"><span class="tag">&lt;div&gt;</span> <span class="class-badge">.catalog-controls</span></div>
+                              <ul class="dom-tree">
+                                <li><div class="node-card"><span class="tag">&lt;div&gt;</span> <span class="class-badge">.filters</span> <span class="event-badge">click [data-filter]</span> <span class="desc">Botones: Todos, Postres, Cafés</span></div></li>
+                                <li><div class="node-card"><span class="tag">&lt;label&gt;</span> <span class="class-badge">.search</span> <span class="desc">Input buscador <code>#search</code></span> <span class="event-badge">input → renderCatalog()</span></div></li>
+                              </ul>
+                            </li>
+                            <li><div class="node-card"><span class="tag">&lt;div&gt;</span> <span class="id-badge">#products</span> <span class="class-badge">.product-grid</span> <span class="event-badge">20 tarjetas &lt;article class="product-card"&gt;</span></div></li>
+                          </ul>
+                        </li>
+                        <li>
+                          <div class="node-card"><span class="tag">&lt;section&gt;</span> <span class="id-badge">#marca</span> <span class="class-badge">.story.wrap</span> <span class="desc">Historia de marca e ilustración de mascota</span></div>
+                        </li>
+                      </ul>
+                    </li>
+
+                    <!-- FOOTER -->
+                    <li>
+                      <div class="node-card"><span class="tag">&lt;footer&gt;</span> <span class="class-badge">.footer</span> <span class="desc">Pie de página, enlaces legales, redes y dirección Maps</span></div>
+                      <ul class="dom-tree">
+                        <li>
+                          <div class="node-card"><span class="tag">&lt;div&gt;</span> <span class="class-badge">.wrap.footer-inner</span></div>
+                          <ul class="dom-tree">
+                            <li><div class="node-card"><span class="tag">&lt;a&gt;</span> <span class="class-badge">.brand</span></div></li>
+                            <li><div class="node-card"><span class="tag">&lt;nav&gt;</span> <span class="event-badge">click [data-info]</span> <span class="desc">Botones: Contacto, Condiciones, Privacidad</span></div></li>
+                            <li><div class="node-card"><span class="tag">&lt;ul&gt;</span> <span class="class-badge">.footer-social</span> <span class="desc">Instagram, Facebook, WhatsApp y Dirección Google Maps (<code>Call 8 #5-20 parque principal</code>)</span></div></li>
+                          </ul>
+                        </li>
+                        <li><div class="node-card"><span class="tag">&lt;p&gt;</span> <span class="class-badge">.prototype-note</span> <span class="desc">Barra de Copyright (<code>#9ACDB5</code>)</span></div></li>
+                      </ul>
+                    </li>
+
+                    <!-- DIALOGS -->
+                    <li>
+                      <div class="node-card"><span class="tag">&lt;dialog&gt;</span> <span class="id-badge">#product-dialog</span> <span class="desc">Modal de detalle de producto y selector de cantidad</span></div>
+                    </li>
+                    <li>
+                      <div class="node-card"><span class="tag">&lt;dialog&gt;</span> <span class="id-badge">#cart-dialog</span> <span class="class-badge">.cart-dialog</span> <span class="desc">Modal lateral del carrito (<code>#cart-items</code>, <code>#cart-total</code>, <code>#checkout-form</code>)</span></div>
+                    </li>
+                    <li>
+                      <div class="node-card"><span class="tag">&lt;dialog&gt;</span> <span class="id-badge">#info-dialog</span> <span class="class-badge">.info-dialog</span> <span class="desc">Modal informativo (Contacto, Condiciones, Privacidad)</span></div>
+                    </li>
+                    <li>
+                      <div class="node-card"><span class="tag">&lt;dialog&gt;</span> <span class="id-badge">#auth-dialog</span> <span class="class-badge">.auth-dialog</span> <span class="desc">Modal de Login / Registro de clientes conectado a tabla <code>clientes</code></span></div>
+                    </li>
+                    <li>
+                      <div class="node-card"><span class="tag">&lt;div&gt;</span> <span class="id-badge">#toast</span> <span class="class-badge">.toast</span> <span class="desc">Notificación flotante accesible (<code>role="status"</code>)</span></div>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+
+    <!-- ÁRBOL 2: PORTAL ADMINISTRACIÓN Y EMPLEADOS -->
+    <section class="dom-panel" id="dom-admin" hidden>
+      <ul class="dom-tree root">
+        <li>
+          <div class="node-card"><span class="tag">document</span> <span class="desc">Portal Independiente (<code>administracion/index.php</code>)</span></div>
+          <ul class="dom-tree">
+            <li>
+              <div class="node-card"><span class="tag">&lt;body&gt;</span></div>
+              <ul class="dom-tree">
+                <li>
+                  <div class="node-card"><span class="tag">&lt;main&gt;</span> <span class="id-badge">#access</span> <span class="class-badge">.access</span> <span class="desc">Vista de autenticación por rol</span></div>
+                  <ul class="dom-tree">
+                    <li><div class="node-card"><span class="tag">&lt;section&gt;</span> <span class="class-badge">.access-brand</span> <span class="desc">Identidad visual y mascota</span></div></li>
+                    <li>
+                      <div class="node-card"><span class="tag">&lt;section&gt;</span> <span class="class-badge">.access-form</span></div>
+                      <ul class="dom-tree">
+                        <li>
+                          <div class="node-card"><span class="tag">&lt;form&gt;</span> <span class="id-badge">#login-form</span> <span class="event-badge">submit → adminApi.login()</span></div>
+                          <ul class="dom-tree">
+                            <li><div class="node-card"><span class="tag">&lt;input&gt;</span> <span class="id-badge">#login-email</span> <span class="desc">Correo institucional (vacío por defecto)</span></div></li>
+                            <li><div class="node-card"><span class="tag">&lt;input&gt;</span> <span class="id-badge">#login-password</span> <span class="desc">Contraseña (vacío por defecto)</span></div></li>
+                            <li><div class="node-card"><span class="tag">&lt;button&gt;</span> <span class="id-badge">#btn-login-admin</span> <span class="event-badge">roleType="administrador"</span> <span class="desc">Valida tabla <code>administradores</code></span></div></li>
+                            <li><div class="node-card"><span class="tag">&lt;button&gt;</span> <span class="id-badge">#btn-login-empleado</span> <span class="event-badge">roleType="empleado"</span> <span class="desc">Valida tabla <code>empleados</code></span></div></li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <div class="node-card"><span class="tag">&lt;div&gt;</span> <span class="id-badge">#panel</span> <span class="class-badge">.panel</span> <span class="desc"> Área de trabajo interna (oculta hasta iniciar sesión)</span></div>
+                  <ul class="dom-tree">
+                    <li>
+                      <div class="node-card"><span class="tag">&lt;aside&gt;</span> <span class="class-badge">.sidebar</span> <span class="desc">Menú lateral: Resumen, Productos (20), Empleados, Clientes, Movimientos y Roles</span></div>
+                    </li>
+                    <li>
+                      <div class="node-card"><span class="tag">&lt;div&gt;</span> <span class="class-badge">.workspace</span></div>
+                      <ul class="dom-tree">
+                        <li><div class="node-card"><span class="tag">&lt;header&gt;</span> <span class="class-badge">.topbar</span> <span class="desc">Usuario activo (<code>#active-user-name</code>, <code>#active-user-role</code>)</span></div></li>
+                        <li><div class="node-card"><span class="tag">&lt;main&gt;</span> <span class="class-badge">.content</span> <span class="desc">Contenedor dinámico <code>#view-content</code> con botones <code>Editar</code>, <code>Borrar</code> y columna <code>Empleado</code> en ventas</span></div></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+                <li><div class="node-card"><span class="tag">&lt;dialog&gt;</span> <span class="id-badge">#editor</span> <span class="desc">Formulario modal para crear/editar registros y ajustar stock</span></div></li>
+                <li><div class="node-card"><span class="tag">&lt;div&gt;</span> <span class="id-badge">#notification</span> <span class="desc">Avisos de confirmación de base de datos</span></div></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <script>
+    // Alternar entre el árbol DOM de la tienda y el del panel administrativo
+    document.querySelectorAll('.tab-btn').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.tab-btn').forEach((b) => b.classList.remove('active'));
+        btn.classList.add('active');
+        const target = btn.dataset.target;
+        document.getElementById('dom-tienda').hidden = target !== 'dom-tienda';
+        document.getElementById('dom-admin').hidden = target !== 'dom-admin';
+      });
+    });
+
+    // Expandir o contraer ramas al hacer clic en una tarjeta de nodo
+    document.querySelectorAll('.node-card').forEach((card) => {
+      card.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const li = card.parentElement;
+        if (li.querySelector('ul.dom-tree')) {
+          li.classList.toggle('collapsed');
+        }
+      });
+    });
+
+    document.getElementById('expand-all').addEventListener('click', () => {
+      document.querySelectorAll('li.collapsed').forEach((li) => li.classList.remove('collapsed'));
+    });
+
+    document.getElementById('collapse-all').addEventListener('click', () => {
+      document.querySelectorAll('.dom-tree .dom-tree .dom-tree li').forEach((li) => {
+        if (li.querySelector('ul.dom-tree')) li.classList.add('collapsed');
+      });
+    });
+  </script>
+</body>
+</html>
+

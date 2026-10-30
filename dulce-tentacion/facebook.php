@@ -1,0 +1,125 @@
+<?php require __DIR__ . '/php/componentes/redes.php'; ?>
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="icon" href="assets/img/logo.png">
+    <link rel="stylesheet" href="css/redes.css?v=20261028d">
+    <script src="js/redes.js" defer></script>
+    <title>Facebook de Dulce Tentación · Simulación</title>
+    <script src="js/visor-fotos.js" defer></script>
+</head>
+
+<body class="facebook">
+    <header class="fb-top fb-original">
+        <div class="fb-tools-left"><a class="fb-letter" href="facebook.php" aria-label="Facebook">f</a><label class="fb-search"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="10" cy="10" r="7" />
+                    <path d="m15 15 6 6" />
+                </svg><input id="fb-search" type="search" placeholder="Buscar en Facebook" aria-label="Buscar en esta página"></label></div>
+        <nav aria-label="Navegación principal de Facebook"><a href="#perfil" aria-label="Inicio"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-8H9v8H4a1 1 0 0 1-1-1z" />
+                </svg></a><a href="#feed" aria-label="Videos"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="3" width="18" height="18" rx="5" />
+                    <path d="M3 9h18M8 3l3 6m4-6 3 6m-8 3 6 4-6 3z" />
+                </svg></a><a href="index.html" aria-label="Marketplace"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 10v11h16V10M3 4h18l1 6c-2 3-4 3-6 0-2 3-4 3-6 0-2 3-4 3-7 0zM9 21v-7h6v7" />
+                </svg></a><a href="#informacion" aria-label="Grupos"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10" />
+                    <circle cx="12" cy="8" r="3" />
+                    <path d="M6 19v-2c0-5 12-5 12 0v2" />
+                </svg></a><button data-demo="Los videojuegos no forman parte de esta propuesta de marca." aria-label="Videojuegos"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="6" width="20" height="13" rx="6" />
+                    <path d="M6 12h6m-3-3v6m8-4h.01m2 3h.01" />
+                </svg></button></nav>
+        <div class="fb-tools-right"><button class="fb-round" data-demo="Esta opción pertenece a la interfaz de demostración." aria-label="Menú"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="4" y="4" width="3" height="3" rx=".5" fill="currentColor" stroke="none" />
+                    <rect x="4" y="10.5" width="3" height="3" rx=".5" fill="currentColor" stroke="none" />
+                    <rect x="4" y="17" width="3" height="3" rx=".5" fill="currentColor" stroke="none" />
+                    <rect x="10.5" y="4" width="3" height="3" rx=".5" fill="currentColor" stroke="none" />
+                    <rect x="10.5" y="10.5" width="3" height="3" rx=".5" fill="currentColor" stroke="none" />
+                    <rect x="10.5" y="17" width="3" height="3" rx=".5" fill="currentColor" stroke="none" />
+                    <rect x="17" y="4" width="3" height="3" rx=".5" fill="currentColor" stroke="none" />
+                    <rect x="17" y="10.5" width="3" height="3" rx=".5" fill="currentColor" stroke="none" />
+                    <rect x="17" y="17" width="3" height="3" rx=".5" fill="currentColor" stroke="none" />
+                </svg></button><button class="fb-round" data-message aria-label="Messenger"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 11a9 9 0 0 1-10 9l-5 2v-5a9 9 0 1 1 15-6z" />
+                    <path d="m6 13 5-5 3 3 4-3-5 6-3-3z" fill="currentColor" />
+                </svg></button><button class="fb-round" data-demo="Esta opción pertenece a la interfaz de demostración." aria-label="Notificaciones"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M5 10a7 7 0 0 1 14 0v6l2 2H3l2-2zM9 21h6" />
+                </svg></button><button class="fb-round fb-account" data-demo="Perfil de demostración de Dulce Tentación." aria-label="Cuenta"><?php echo social_avatar("mini"); ?><span>⌄</span></button></div>
+    </header>
+    <main id="perfil">
+        <div class="fb-profile-shell">
+            <section class="fb-cover" aria-label="Portada de Facebook">
+                <div class="cover-copy"><small>DULCE TENTACIÓN</small>
+                    <h1>Tu pausa<br>más dulce.</h1>
+                    <p>Postres protagonistas. Café que acompaña.</p>
+                </div><?php echo social_avatar('cover-logo'); ?><div class="cover-decoration"></div>
+            </section>
+            <header class="fb-profile">
+                <div class="fb-profile-id"><?php echo social_avatar('fb-avatar'); ?><div>
+                        <h2>Dulce Tentación</h2>
+                        <p>860 Me gusta · 1,2 mil seguidores</p><small>Cifras ilustrativas</small>
+                    </div>
+                </div>
+                <div class="fb-profile-actions"><button class="blue" data-message>◉ Enviar mensaje</button><button data-follow>+ Seguir</button></div>
+            </header>
+            <nav class="fb-tabs"><a href="#feed">Publicaciones</a><a href="#informacion">Información</a><a href="#fotos">Fotos</a><a href="index.html">Tienda ↗</a></nav>
+        </div>
+        <div class="fb-columns">
+            <aside>
+                <section class="fb-card" id="informacion">
+                    <h2>Presentación</h2>
+                    <p class="intro">Un postre, un café y un momento para ti. 🧁☕</p>
+                    <p>◉ Página · Tienda de postres y café</p>
+                    <p>♡ Tu pausa más dulce.</p><a href="index.html">↗ Explora nuestro catálogo</a>
+                    <p class="account-note">Horarios, ubicación y perfiles definitivos por confirmar.</p>
+                </section>
+                <section class="fb-card" id="fotos">
+                    <h2>Fotos <a href="#feed">Ver publicaciones</a></h2>
+                    <div class="fb-photos">
+                        <div><?php echo social_art('cupcake'); ?></div>
+                        <div><?php echo social_art('brand'); ?></div>
+                        <div><?php echo social_art('coffee'); ?></div>
+                        <div><?php echo social_art('mascot'); ?></div>
+                    </div>
+                </section>
+                <p class="social-footer">Propuesta visual · Facebook simulado</p>
+            </aside>
+            <section class="fb-feed" id="feed">
+                <div class="fb-card feed-heading">
+                    <h2>Publicaciones</h2><span>Contenido propuesto</span>
+                </div>
+                <article class="fb-card fb-post">
+                    <header><?php echo social_avatar('mini'); ?><div><strong>Dulce Tentación</strong><small>Publicación de ejemplo · Público</small></div><span class="post-dots">···</span></header>
+                    <p>Tu pausa más dulce. Un postre, un café y un momento para ti.</p><?php echo social_art('brand'); ?><div class="fb-reactions"><span>👍 ❤️ <span data-count>86</span></span><span>Comentarios de ejemplo</span></div>
+                    <div class="fb-post-actions"><button data-like aria-pressed="false">♡ Me gusta</button><button data-comment>○ Comentar</button><button data-demo="Compartir sería una acción de la cuenta real. Esta propuesta se conserva localmente.">↗ Compartir</button></div>
+                    <form class="comment-form" hidden><label class="sr-only">Comentario de prueba</label><input aria-label="Comentario de prueba" placeholder="Escribe un comentario de prueba…" maxlength="300"><button>Publicar localmente</button></form>
+                    <div class="comments"></div>
+                </article>
+                <article class="fb-card fb-post">
+                    <header><?php echo social_avatar('mini'); ?><div><strong>Dulce Tentación</strong><small>Publicación de ejemplo · Público</small></div><span class="post-dots">···</span></header>
+                    <p>Un toque de fresa para alegrar tu pausa.</p><?php echo social_art('cupcake'); ?><div class="fb-reactions"><span>👍 ❤️ <span data-count>103</span></span><span>Comentarios de ejemplo</span></div>
+                    <div class="fb-post-actions"><button data-like aria-pressed="false">♡ Me gusta</button><button data-comment>○ Comentar</button><button data-demo="Compartir sería una acción de la cuenta real. Esta propuesta se conserva localmente.">↗ Compartir</button></div>
+                    <form class="comment-form" hidden><label class="sr-only">Comentario de prueba</label><input aria-label="Comentario de prueba" placeholder="Escribe un comentario de prueba…" maxlength="300"><button>Publicar localmente</button></form>
+                    <div class="comments"></div>
+                </article>
+                <article class="fb-card fb-post">
+                    <header><?php echo social_avatar('mini'); ?><div><strong>Dulce Tentación</strong><small>Publicación de ejemplo · Público</small></div><span class="post-dots">···</span></header>
+                    <p>Café que acompaña tu postre favorito.</p><?php echo social_art('coffee'); ?><div class="fb-reactions"><span>👍 ❤️ <span data-count>120</span></span><span>Comentarios de ejemplo</span></div>
+                    <div class="fb-post-actions"><button data-like aria-pressed="false">♡ Me gusta</button><button data-comment>○ Comentar</button><button data-demo="Compartir sería una acción de la cuenta real. Esta propuesta se conserva localmente.">↗ Compartir</button></div>
+                    <form class="comment-form" hidden><label class="sr-only">Comentario de prueba</label><input aria-label="Comentario de prueba" placeholder="Escribe un comentario de prueba…" maxlength="300"><button>Publicar localmente</button></form>
+                    <div class="comments"></div>
+                </article>
+            </section>
+        </div>
+    </main>
+    <dialog id="social-dialog"><button class="close" aria-label="Cerrar">×</button>
+        <div id="social-dialog-content"></div>
+    </dialog>
+    <div id="social-toast" role="status"></div><?php require __DIR__ . '/php/componentes/visor-fotos.php'; ?>
+</body>
+
+</html>

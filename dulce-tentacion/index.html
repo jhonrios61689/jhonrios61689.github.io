@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Dulce Tentación. Postres protagonistas y cafés que acompañan tu pausa más dulce.">
+  <meta name="theme-color" content="#FFF0D6">
+  <title>Dulce Tentación · Tu pausa más dulce</title>
+  <link rel="icon" href="assets/img/logo.png">
+  <link rel="stylesheet" href="css/styles.css?v=14">
+  <script src="js/app.js?v=14" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#contenido">Ir al contenido</a>
+
+  <!-- ======================================================================
+       VISTA · Bloque 01: Encabezado, Navegacion, Acceso de Cliente y Carrito
+       ====================================================================== -->
+  <header class="header wrap">
+    <a class="brand" href="#inicio" aria-label="Dulce Tentación, inicio">
+      <img src="assets/img/logo.png" alt="" width="66" height="66">
+      <span>Dulce Tentación</span>
+    </a>
+
+    <nav class="nav" id="menu" aria-label="Navegación principal">
+      <a href="#inicio" data-nav="inicio" aria-current="page">Inicio</a>
+      <a href="#postres" data-nav="postres">Postres</a>
+      <a href="#cafes" data-nav="cafes">Cafés</a>
+      <a href="#marca" data-nav="marca">Nuestra marca</a>
+    </nav>
+
+    <button type="button" class="auth-toggle" id="auth-toggle" aria-haspopup="dialog">
+      <svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="8" r="4"/>
+        <path d="M4 20c1.8-3.8 5-6 8-6s6.2 2.2 8 6"/>
+      </svg>
+      <span id="auth-toggle-label">Ingresar</span>
+    </button>
+
+    <button class="cart-toggle" aria-haspopup="dialog">
+      Mi pedido <span>(<span class="cart-count">0</span>)</span>
+    </button>
+
+    <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </header>
+
+  <main id="contenido">
+    <!-- ====================================================================
+         VISTA · Bloque 02: Portada Principal (Hero)
+         ==================================================================== -->
+    <section class="hero wrap" id="inicio" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow">Un momento para ti</p>
+        <h1 id="hero-title">Tu pausa<br>más dulce.</h1>
+        <p class="hero-description">
+          <span class="desktop-copy">Elige un postre y acompáñalo con tu café favorito.</span>
+          <span class="mobile-copy">Postres y cafés para disfrutar.</span>
+        </p>
+        <div class="hero-actions">
+          <a class="button primary" href="#postres">Explorar postres <span aria-hidden="true">›</span></a>
+          <a class="text-link" href="#cafes">Ver cafés <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+      <img class="hero-photo" src="assets/img/postres-cafe.png" alt="Cupcake de fresa, postre en vaso y cappuccino en una mesa color crema" width="1536" height="1024" fetchpriority="high">
+    </section>
+
+    <!-- ====================================================================
+         VISTA · Bloques 03 y 04: Categoria Activa y Catalogo de Productos
+         ==================================================================== -->
+    <section class="catalog wrap" id="catalogo" aria-labelledby="catalog-title">
+      <div class="section-heading">
+        <h2 id="catalog-title">¿Qué se te antoja hoy?</h2>
+        <p id="catalog-subtitle">Postres y cafés para descubrir</p>
+      </div>
+      <div class="category-context" hidden>
+        <span id="category-label"></span>
+        <a href="#inicio">Ver todos <span aria-hidden="true">→</span></a>
+      </div>
+      <div class="product-grid" id="products"></div>
+    </section>
+
+    <!-- ====================================================================
+         VISTA · Bloque 05: Nuestra Marca
+         ==================================================================== -->
+    <section class="story wrap" id="marca" aria-labelledby="story-title">
+      <div class="story-art">
+        <img src="assets/img/mascota.png" alt="La mascota de Dulce Tentación: un cupcake sonriente sosteniendo su café" width="1536" height="1024" loading="lazy">
+      </div>
+      <div class="story-copy">
+        <p class="eyebrow">Dulce Tentación</p>
+        <h2 id="story-title">Postres protagonistas.<br>Café que acompaña.</h2>
+        <p>Un postre, un café y un momento para ti. Nos gusta la idea de hacer más especiales esas pequeñas pausas que invitan a disfrutar y compartir.</p>
+        <a class="text-link" href="#postres">Encuentra tu próxima tentación <span aria-hidden="true">→</span></a>
+      </div>
+    </section>
+  </main>
+
+  <!-- ======================================================================
+       VISTA · Pie de Pagina y Redes Sociales
+       ====================================================================== -->
+  <footer class="footer">
+    <div class="wrap footer-inner">
+      <a class="brand" href="#inicio">
+        <img src="assets/img/logo.png" alt="" width="52" height="52">
+        <span>Dulce Tentación</span>
+      </a>
+
+      <p>Tu pausa más dulce.</p>
+
+      <div class="footer-meta">
+        <nav aria-label="Información">
+          <button data-info="contacto">Contacto</button>
+          <button data-info="condiciones">Condiciones</button>
+          <button data-info="privacidad">Privacidad</button>
+        </nav>
+
+        <ul class="footer-social" aria-label="Redes sociales">
+          <li>
+            <a class="social-link" href="instagram.php" aria-label="Instagram">
+              <svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2.5" y="2.5" width="19" height="19" rx="5"/>
+                <circle cx="12" cy="12" r="4.2"/>
+                <circle cx="17.4" cy="6.6" r="1.2" fill="currentColor" stroke="none"/>
+              </svg>
+            </a>
+          </li>
+          <li>
+            <a class="social-link" href="facebook.php" aria-label="Facebook">
+              <svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                <path d="M13.6 21v-8.2h2.8l.4-3.2h-3.2V7.5c0-.9.3-1.6 1.6-1.6h1.7V3.1c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3v2.3H7.4v3.2h2.8V21h3.4z"/>
+              </svg>
+            </a>
+          </li>
+          <li>
+            <a class="social-link" href="https://wa.me/573113617622" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+              <svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20">
+                <path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21z"/>
+                <path fill="currentColor" d="M9.4 7.7c-.2-.4-.4-.4-.6-.4h-.5c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.2 5 4.3 2.5 1 3 .8 3.5.7.5-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.1-1.4-.1-.1-.3-.2-.6-.4l-1.9-.9c-.3-.1-.5-.2-.7.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.4-2.3-1.4-.8-.7-1.4-1.7-1.6-2-.2-.3 0-.4.1-.6l.4-.5c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.1z"/>
+              </svg>
+            </a>
+          </li>
+          <li>
+            <a class="social-link location-link" href="https://www.google.com/maps/search/?api=1&query=Calle+6+%235-20+parque+principal" target="_blank" rel="noopener noreferrer" aria-label="Ubicación en Google Maps: Calle 6 #5-20 parque principal" title="Ver en Google Maps">
+              <svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+              <span>Calle 6 #5-20 parque principal</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="prototype-note">© Analisis y Diseño de Soluciones Web 12 2026 todos los derechos reservados</p>
+  </footer>
+
+  <!-- ======================================================================
+       VISTA · Componentes Modales: Producto, Carrito, Informacion y Login
+       ====================================================================== -->
+  <dialog id="product-dialog" aria-labelledby="product-title">
+    <button class="close-button" data-close aria-label="Cerrar producto">×</button>
+    <div class="product-detail"></div>
+  </dialog>
+
+  <dialog id="cart-dialog" class="cart-dialog" aria-labelledby="cart-title">
+    <div class="dialog-heading">
+      <div>
+        <p class="eyebrow">Tu pausa está tomando forma</p>
+        <h2 id="cart-title">Mi pedido</h2>
+      </div>
+      <button class="close-button" data-close aria-label="Cerrar pedido">×</button>
+    </div>
+
+    <div id="cart-content"></div>
+
+    <form id="whatsapp-form" class="order-form" hidden>
+      <h3>Datos para tu solicitud</h3>
+
+      <label for="order-name">Tu nombre <span>(opcional)</span></label>
+      <input id="order-name" name="name" autocomplete="name" maxlength="80">
+
+      <label for="order-method">¿Cómo prefieres recibirlo?</label>
+      <select id="order-method" name="method">
+        <option value="confirmar">Por acordar con el negocio</option>
+        <option value="recogida">Prefiero recogerlo</option>
+        <option value="domicilio">Prefiero domicilio</option>
+      </select>
+
+      <label for="order-location">Municipio, barrio y dirección o referencia <span id="location-optional">(opcional)</span></label>
+      <textarea id="order-location" name="location" rows="3" maxlength="300" autocomplete="street-address" placeholder="Escribe dónde deseas recibir el pedido" aria-describedby="location-help"></textarea>
+      <p id="location-help" class="form-note">Si prefieres domicilio, indica la ubicación. El negocio confirmará cobertura y costo de entrega.</p>
+
+      <label for="order-notes">Indicaciones adicionales <span>(opcional)</span></label>
+      <textarea id="order-notes" name="notes" rows="2" maxlength="500" placeholder="Por ejemplo, una referencia para encontrar el lugar"></textarea>
+
+      <button type="submit" class="button whatsapp-button">Solicitar pedido por WhatsApp</button>
+      <p class="form-note">Se abrirá WhatsApp con tu selección y los datos que escribas. Revisa y envía el mensaje para solicitar confirmación de precios, disponibilidad y entrega.</p>
+    </form>
+  </dialog>
+
+  <dialog id="info-dialog" class="info-dialog" aria-labelledby="info-title">
+    <button class="close-button" data-close aria-label="Cerrar información">×</button>
+    <h2 id="info-title"></h2>
+    <p id="info-content"></p>
+    <button class="button primary" data-close>Entendido</button>
+  </dialog>
+
+  <dialog id="auth-dialog" class="auth-dialog" closedby="any" aria-labelledby="auth-title">
+    <button type="button" class="close-button" data-close aria-label="Cerrar acceso de clientes">×</button>
+    <div class="auth-layout">
+      <aside class="auth-showcase" aria-label="Beneficios del club Dulce Tentación">
+        <div class="auth-showcase-top">
+          <span class="auth-badge">✦ Club Dulce Tentación</span>
+          <h3>Tu pausa más dulce empieza aquí.</h3>
+          <p>Regístrate o inicia sesión con tu correo electrónico para guardar tus datos y finalizar tus pedidos en segundos.</p>
+        </div>
+        <div class="auth-mascot-card">
+          <img src="assets/img/mascota.png" alt="Mascota de Dulce Tentación" width="180" height="120" loading="lazy">
+          <div>
+            <strong>Antojos hechos a tu medida</strong>
+            <span>Postres artesanales y café recién preparado</span>
+          </div>
+        </div>
+        <ul class="auth-perks">
+          <li><span aria-hidden="true">🧁</span> Guarda tus datos para próximas compras</li>
+          <li><span aria-hidden="true">💌</span> Acceso rápido y seguro con tu correo</li>
+          <li><span aria-hidden="true">⚡</span> Confirmación inmediata para tu pedido</li>
+        </ul>
+      </aside>
+
+      <div class="auth-panel">
+        <div id="auth-checkout-notice" class="auth-checkout-notice" hidden>
+          <span class="notice-icon" aria-hidden="true">🛍️</span>
+          <div>
+            <strong>¡Casi listo para finalizar tu compra!</strong>
+            <p>Regístrate con tu correo electrónico (o inicia sesión si ya tienes cuenta) para completar tu pedido.</p>
+          </div>
+        </div>
+
+        <div id="auth-forms-box">
+          <div class="auth-header">
+            <p class="eyebrow" id="auth-eyebrow">Acceso de clientes</p>
+            <h2 id="auth-title">Inicia sesión con tu correo</h2>
+          </div>
+
+          <div class="auth-tabs" role="tablist" aria-label="Opciones de acceso">
+            <button type="button" class="auth-tab active" data-auth-tab="login" role="tab" aria-selected="true">Iniciar sesión</button>
+            <button type="button" class="auth-tab" data-auth-tab="register" role="tab" aria-selected="false">Crear cuenta</button>
+          </div>
+
+          <form id="login-form" class="auth-form">
+            <div class="auth-field">
+              <label for="login-email">Correo electrónico</label>
+              <div class="input-icon-wrap">
+                <svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m3 7 9 6 9-6"/></svg>
+                <input id="login-email" name="email" type="email" inputmode="email" autocomplete="username" spellcheck="false" placeholder="tucorreo@ejemplo.com" enterkeyhint="next" required>
+              </div>
+            </div>
+
+            <div class="auth-field">
+              <div class="label-row">
+                <label for="current-password">Contraseña</label>
+                <button type="button" class="auth-link-btn" data-forgot-password>¿Olvidaste tu contraseña?</button>
+              </div>
+              <div class="input-icon-wrap">
+                <svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+                <input id="current-password" name="password" type="password" autocomplete="current-password" minlength="6" placeholder="Ingresa tu contraseña" enterkeyhint="done" required>
+                <button type="button" class="toggle-password" data-toggle-pass="current-password" aria-label="Mostrar contraseña" aria-pressed="false">Ver</button>
+              </div>
+            </div>
+
+            <p id="login-error" class="auth-error" role="alert" hidden></p>
+            <button type="submit" class="button primary auth-submit" id="login-submit-btn">Iniciar sesión con mi correo <span aria-hidden="true">→</span></button>
+            <p class="auth-switch-copy">¿Aún no tienes cuenta? <button type="button" class="auth-link-btn" data-auth-tab="register">Regístrate gratis aquí</button></p>
+          </form>
+
+          <form id="register-form" class="auth-form" hidden>
+            <div class="auth-field">
+              <label for="register-name">Nombre completo</label>
+              <div class="input-icon-wrap">
+                <svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c1.8-3.8 5-6 8-6s6.2 2.2 8 6"/></svg>
+                <input id="register-name" name="name" type="text" autocomplete="name" maxlength="80" placeholder="Ej. Valentina Gómez" enterkeyhint="next" required>
+              </div>
+            </div>
+
+            <div class="auth-field">
+              <label for="register-email">Correo electrónico</label>
+              <div class="input-icon-wrap">
+                <svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m3 7 9 6 9-6"/></svg>
+                <input id="register-email" name="email" type="email" inputmode="email" autocomplete="username" spellcheck="false" placeholder="tucorreo@ejemplo.com" enterkeyhint="next" required>
+              </div>
+            </div>
+
+            <div class="auth-field">
+              <label for="register-phone">WhatsApp o teléfono <span>(opcional)</span></label>
+              <div class="input-icon-wrap">
+                <svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7A2 2 0 0 1 22 16.9z"/></svg>
+                <input id="register-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" maxlength="25" placeholder="Ej. 311 361 7622" enterkeyhint="next">
+              </div>
+            </div>
+
+            <div class="auth-field">
+              <label for="new-password">Crea una contraseña</label>
+              <div class="input-icon-wrap">
+                <svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+                <input id="new-password" name="new-password" type="password" autocomplete="new-password" minlength="6" placeholder="Mínimo 6 caracteres" enterkeyhint="done" required>
+                <button type="button" class="toggle-password" data-toggle-pass="new-password" aria-label="Mostrar contraseña" aria-pressed="false">Ver</button>
+              </div>
+            </div>
+
+            <p id="register-error" class="auth-error" role="alert" hidden></p>
+            <button type="submit" class="button primary auth-submit" id="register-submit-btn">Crear mi cuenta <span aria-hidden="true">→</span></button>
+            <p class="auth-switch-copy">¿Ya tienes cuenta? <button type="button" class="auth-link-btn" data-auth-tab="login">Inicia sesión aquí</button></p>
+          </form>
+        </div>
+
+        <div id="account-view" class="account-view" hidden>
+          <div class="account-card">
+            <div class="account-avatar" id="account-avatar">DT</div>
+            <p class="eyebrow">Sesión iniciada</p>
+            <h2 id="account-name">Cliente</h2>
+            <p class="account-email" id="account-email"></p>
+            <p class="account-phone" id="account-phone" hidden></p>
+          </div>
+          <div class="account-actions">
+            <button type="button" class="button primary" data-open-cart>Ir a Mi pedido (<span class="cart-count">0</span>)</button>
+            <button type="button" class="button secondary" id="logout-button">Cerrar sesión</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <div id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

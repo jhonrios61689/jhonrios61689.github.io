@@ -1,0 +1,28 @@
+[req]
+default_bits       = 2048
+prompt             = no
+default_md         = sha256
+x509_extensions    = v3_req
+distinguished_name = dn
+
+[dn]
+C  = CO
+ST = Antioquia
+L  = Medellin
+O  = Dulce Tentacion
+OU = Desarrollo Web
+CN = localhost
+
+[v3_req]
+subjectAltName = @alt_names
+basicConstraints = CA:TRUE
+keyUsage = digitalSignature, keyEncipherment, dataEncipherment, keyCertSign
+extendedKeyUsage = serverAuth
+
+[alt_names]
+DNS.1 = localhost
+DNS.2 = dulcetentacion.com
+DNS.3 = www.dulcetentacion.com
+DNS.4 = dulce-tentacion.local
+IP.1  = 127.0.0.1
+

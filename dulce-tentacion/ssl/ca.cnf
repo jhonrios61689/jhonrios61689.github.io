@@ -1,0 +1,21 @@
+[req]
+default_bits       = 2048
+prompt             = no
+default_md         = sha256
+x509_extensions    = v3_ca
+distinguished_name = dn
+
+[dn]
+C  = CO
+ST = Antioquia
+L  = Medellin
+O  = Dulce Tentacion
+OU = Seguridad Web
+CN = Dulce Tentacion Local Root CA
+
+[v3_ca]
+subjectKeyIdentifier   = hash
+authorityKeyIdentifier = keyid:always,issuer
+basicConstraints       = critical, CA:TRUE
+keyUsage               = critical, digitalSignature, cRLSign, keyCertSign
+
