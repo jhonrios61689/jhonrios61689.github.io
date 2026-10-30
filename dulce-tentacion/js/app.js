@@ -255,6 +255,22 @@ const info = {
 
 const whatsappNumber = '573113617622';
 let cart = {};
+
+// Clientes registrados en la base de datos MySQL (sistema_dulcetentacion en Workbench)
+// Disponibles para autenticación tanto en servidor local como en despliegue estático (GitHub Pages)
+const INITIAL_DATABASE_CLIENTS = [
+  { id_cliente: 1, name: 'Brahiam Bedoya', email: 'brahiam.b@email.com', password: 'pass_c1', phone: '3001112233', address: 'Avenida 7 #8-9' },
+  { id_cliente: 2, name: 'Emanuel Morales', email: 'emanuel.m@email.com', password: 'pass_c2', phone: '3002223344', address: 'Carrera 4 #5-6' },
+  { id_cliente: 3, name: 'Juan Cardona', email: 'juan.c@email.com', password: 'pass_c3', phone: '3003334455', address: 'Avenida 7 #8-9' },
+  { id_cliente: 4, name: 'Robinson Monsalve', email: 'robins.m@email.com', password: 'pass_c4', phone: '3004445566', address: 'Calle 10 #11-12' },
+  { id_cliente: 5, name: 'Jhon Gómez', email: 'jhon.g@email.com', password: 'pass_c5', phone: '3005556677', address: 'Transversal 13 #14-15' },
+  { id_cliente: 6, name: 'Oscar Hurtado', email: 'oscar.h@email.com', password: 'pass_c6', phone: '3006667788', address: 'Diagonal 16 #17-18' },
+  { id_cliente: 7, name: 'Mariana Monsalve', email: 'mariana.m@email.com', password: 'pass_c7', phone: '3007778899', address: 'Calle 19 #20-21' },
+  { id_cliente: 8, name: 'Felipe Henao', email: 'felipe.h@email.com', password: 'pass_c8', phone: '3008889900', address: 'Carrera 22 #23-24' },
+  { id_cliente: 9, name: 'Yhojan Salazar', email: 'yhojan.s@email.com', password: 'pass_c9', phone: '3009990011', address: 'Avenida 25 #26-27' },
+  { id_cliente: 10, name: 'Daniel Valencia', email: 'daniel.v@email.com', password: 'pass_c10', phone: '3000001122', address: 'Calle 28 #29-30' }
+];
+
 let users = [];
 let currentUser = null;
 let pendingCheckout = false;
@@ -273,10 +289,26 @@ try {
 } catch {}
 
 try {
-  users = JSON.parse(localStorage.getItem('dulce-users-v1') || '[]');
-  if (!Array.isArray(users)) users = [];
+  const savedUsers = JSON.parse(localStorage.getItem('dulce-users-v1') || '[]');
+  const userMap = new Map();
+  // Primero agregar clientes de la base de datos
+  for (const client of INITIAL_DATABASE_CLIENTS) {
+    userMap.set(client.email.toLowerCase(), client);
+  }
+  // Combinar con nuevos usuarios registrados por el usuario en el navegador
+  if (Array.isArray(savedUsers)) {
+    for (const u of savedUsers) {
+      if (u && u.email) {
+        userMap.set(u.email.toLowerCase(), {
+          ...u,
+          name: u.name || `${u.nombre || ''} ${u.apellido || ''}`.trim() || 'Cliente'
+        });
+      }
+    }
+  }
+  users = Array.from(userMap.values());
 } catch {
-  users = [];
+  users = [...INITIAL_DATABASE_CLIENTS];
 }
 
 try {
@@ -907,7 +939,7 @@ $('#login-form')?.addEventListener('submit', async (e) => {
   e.preventDefault();
   $('#login-error').hidden = true;
   const email = $('#login-email').value.trim().toLowerCase();
-  const password = $('#current-password').value;
+  const password = $('#current-password').value.trim();
   if (!$('#login-form').reportValidity()) return;
 
   try {
@@ -919,26 +951,29 @@ $('#login-form')?.addEventListener('submit', async (e) => {
       },
       body: JSON.stringify({ email, password })
     });
-    const data = await res.json();
-    if (data?.ok && data.user) {
-      $('#login-form').reset();
-      await completeAuth(data.user, `¡Bienvenido de nuevo, ${data.user.name.split(' ')[0]}!`);
-      return;
-    }
-    if (data?.message) {
-      $('#login-error').hidden = false;
-      $('#login-error').textContent = data.message;
-      return;
+    if (res.ok) {
+      const data = await res.json();
+      if (data?.ok && data.user) {
+        $('#login-form').reset();
+        await completeAuth(data.user, `¡Bienvenido de nuevo, ${data.user.name.split(' ')[0]}!`);
+        return;
+      }
+      if (data?.message) {
+        $('#login-error').hidden = false;
+        $('#login-error').textContent = data.message;
+        return;
+      }
     }
   } catch {}
 
-  const found = users.find((u) => u.email.toLowerCase() === email);
+  // Fallback para despliegues estáticos (GitHub Pages) con base de datos pre-cargada
+  const found = users.find((u) => (u.email || '').trim().toLowerCase() === email);
   if (!found) {
     $('#login-error').hidden = false;
     $('#login-error').textContent = 'No encontramos una cuenta con este correo. ¡Regístrate en segundos en la pestaña Crear cuenta!';
     return;
   }
-  if (found.password !== password) {
+  if (found.password && found.password.trim() !== password) {
     $('#login-error').hidden = false;
     $('#login-error').textContent = 'La contraseña ingresada no coincide. Verifica e inténtalo de nuevo.';
     return;
@@ -956,7 +991,7 @@ $('#register-form')?.addEventListener('submit', async (e) => {
   const name = $('#register-name').value.trim();
   const email = $('#register-email').value.trim().toLowerCase();
   const phone = $('#register-phone').value.trim();
-  const password = $('#new-password').value;
+  const password = $('#new-password').value.trim();
   const address = $('#order-location')?.value.trim() || '';
 
   if (name.length < 2) {
@@ -974,21 +1009,23 @@ $('#register-form')?.addEventListener('submit', async (e) => {
       },
       body: JSON.stringify({ name, email, phone, address, password })
     });
-    const data = await res.json();
-    if (data?.ok && data.user) {
-      $('#register-form').reset();
-      await completeAuth(data.user, `¡Cuenta registrada en el sistema, ${data.user.name.split(' ')[0]}!`);
-      return;
-    }
-    if (data?.message) {
-      $('#register-error').hidden = false;
-      $('#register-error').textContent = data.message;
-      return;
+    if (res.ok) {
+      const data = await res.json();
+      if (data?.ok && data.user) {
+        $('#register-form').reset();
+        await completeAuth(data.user, `¡Cuenta registrada en el sistema, ${data.user.name.split(' ')[0]}!`);
+        return;
+      }
+      if (data?.message) {
+        $('#register-error').hidden = false;
+        $('#register-error').textContent = data.message;
+        return;
+      }
     }
   } catch {}
 
-  const existingIdx = users.findIndex((u) => u.email.toLowerCase() === email);
-  const newUser = { name, email, phone, password };
+  const existingIdx = users.findIndex((u) => (u.email || '').trim().toLowerCase() === email);
+  const newUser = { id_cliente: Date.now(), name, email, phone, address, password };
   if (existingIdx >= 0) users[existingIdx] = newUser;
   else users.push(newUser);
 
