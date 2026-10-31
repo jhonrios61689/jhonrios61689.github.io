@@ -7,10 +7,10 @@ header('Content-Type: text/html; charset=UTF-8');
   <meta charset="utf-8">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Panel del Administrador · Dulce Tentación</title>
+  <title>Panel de Administración y Empleados · Dulce Tentación</title>
   <link rel="icon" href="assets/img/logo.png">
-  <link rel="stylesheet" href="css/admin.css?v=12">
-  <script type="module" src="js/app.js?v=12"></script>
+  <link rel="stylesheet" href="css/admin.css?v=13">
+  <script type="module" src="js/app.js?v=13"></script>
 </head>
 <body>
   <?php require __DIR__ . '/php/vistas/acceso.php'; ?>
