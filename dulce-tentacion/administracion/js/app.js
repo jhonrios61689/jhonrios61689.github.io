@@ -382,9 +382,51 @@ $('#record-form').addEventListener('submit', async (e) => {
 
 let selectedLoginRole = 'administrador';
 
+function updateRoleUI() {
+  const isAdm = selectedLoginRole === 'administrador';
+  const roleBadge = $('#role-badge');
+  const roleTitle = $('#role-login-title');
+  const roleDesc = $('#role-login-desc');
+  const labelEmail = $('#label-login-email');
+  const emailInput = $('#login-email');
+  const submitBtn = $('#btn-login-submit');
+  const submitText = $('#btn-login-text');
+  const switchText = $('#role-switch-text');
+  const switchBtn = $('#btn-switch-role');
+  const helpText = $('#role-help-text');
+
+  if (roleBadge) roleBadge.textContent = isAdm ? 'ACCESO DEL ADMINISTRADOR' : 'ACCESO DE EMPLEADO';
+  if (roleTitle) roleTitle.textContent = isAdm ? 'Iniciar sesión como Administrador' : 'Iniciar sesión como Empleado';
+  if (roleDesc) roleDesc.textContent = isAdm
+    ? 'Ingresa tu correo institucional y contraseña autorizada en la base de datos MySQL.'
+    : 'Ingresa tu correo de empleado operativo registrado en la base de datos MySQL.';
+  if (labelEmail) labelEmail.textContent = isAdm ? 'Correo del Administrador' : 'Correo del Empleado';
+  if (emailInput) emailInput.placeholder = isAdm ? 'admin1@local.com' : 'empleado1@local.com';
+  if (submitBtn) {
+    submitBtn.dataset.loginRole = selectedLoginRole;
+    submitBtn.className = isAdm ? 'btn primary' : 'btn mint';
+  }
+  if (submitText) submitText.textContent = isAdm ? 'Entrar como Administrador' : 'Entrar como Empleado';
+  if (switchText) switchText.textContent = isAdm ? '¿Eres empleado operativo?' : '¿Eres Administrador?';
+  if (switchBtn) switchBtn.textContent = isAdm ? 'Acceso para Empleado' : 'Volver al acceso de Administrador';
+  if (helpText) {
+    helpText.innerHTML = isAdm
+      ? 'Valida exclusivamente en la tabla <code>administradores</code> de MySQL (ejemplo: <b>admin1@local.com</b> / <b>pass123</b>).'
+      : 'Valida en la tabla <code>empleados</code> de MySQL (ejemplo: <b>empleado1@local.com</b> / <b>emp_pass_1</b>).';
+  }
+}
+
+$('#btn-switch-role')?.addEventListener('click', () => {
+  selectedLoginRole = selectedLoginRole === 'administrador' ? 'empleado' : 'administrador';
+  updateRoleUI();
+  $('#login-feedback').hidden = true;
+  $('#login-email')?.focus();
+});
+
 document.querySelectorAll('[data-login-role]').forEach((btn) => {
   btn.addEventListener('click', () => {
     selectedLoginRole = btn.dataset.loginRole;
+    updateRoleUI();
   });
 });
 
@@ -413,6 +455,8 @@ $('#show-password').addEventListener('click', () => {
 
 $('#logout').addEventListener('click', () => {
   activeUser = null;
+  selectedLoginRole = 'administrador';
+  updateRoleUI();
   $('#panel').hidden = true;
   $('#access').hidden = false;
   $('#login-feedback').hidden = true;

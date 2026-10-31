@@ -66,8 +66,12 @@ class AdminController
             return ['status' => 400, 'body' => ['ok' => false, 'message' => 'Ingresa tu correo y contraseña.']];
         }
 
+        if ($roleType === '') {
+            $roleType = 'administrador';
+        }
+
         if (!in_array($roleType, ['administrador', 'empleado'], true)) {
-            return ['status' => 400, 'body' => ['ok' => false, 'message' => 'Selecciona si deseas iniciar sesión desde el botón de Administrador o de Empleado.']];
+            $roleType = 'administrador';
         }
 
         // 1. Buscar en tabla `administradores`

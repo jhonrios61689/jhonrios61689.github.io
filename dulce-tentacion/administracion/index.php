@@ -1,12 +1,16 @@
+<?php
+header('Content-Type: text/html; charset=UTF-8');
+?>
 <!doctype html>
 <html lang="es">
 <head>
   <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Panel de Administración y Empleados · Dulce Tentación</title>
+  <title>Panel del Administrador · Dulce Tentación</title>
   <link rel="icon" href="assets/img/logo.png">
-  <link rel="stylesheet" href="css/admin.css?v=10">
-  <script type="module" src="js/app.js?v=10"></script>
+  <link rel="stylesheet" href="css/admin.css?v=12">
+  <script type="module" src="js/app.js?v=12"></script>
 </head>
 <body>
   <?php require __DIR__ . '/php/vistas/acceso.php'; ?>
